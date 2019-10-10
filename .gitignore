@@ -6,5 +6,4 @@
 working
 *.txt
 inst/doc
-*.svg
 pkgdown
