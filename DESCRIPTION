@@ -1,0 +1,18 @@
+Package: devoutsvg
+Type: Package
+Title: SVG Graphics Device Written in R
+Version: 0.1.0
+Author: mikefc@coolbutuseless.com
+Maintainer: mikefc <mikefc@coolbutuseless.com>
+Description: SVG graphics device written in R.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/coolbutuseless/devoutsvg,https://coolbutuseless.github.io/package/devoutsvg
+Imports:
+    devout,
+    gdtools,
+    glue,
+    htmltools,
+    minisvg
+RoxygenNote: 6.1.99.9001
