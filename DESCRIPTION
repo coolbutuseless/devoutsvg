@@ -1,18 +1,21 @@
 Package: devoutsvg
 Type: Package
-Title: SVG Graphics Device Written in R
+Title: SVG Graphics Device with Pattern Fill
 Version: 0.1.0
 Author: mikefc@coolbutuseless.com
 Maintainer: mikefc <mikefc@coolbutuseless.com>
-Description: SVG graphics device written in R.
+Description: SVG graphics device written in R. Supports regions filled with patterns.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/coolbutuseless/devoutsvg,https://coolbutuseless.github.io/package/devoutsvg
+Depends:
+    devout
 Imports:
-    devout,
     gdtools,
     glue,
-    htmltools,
     minisvg
+Suggests:
+    svgpatternsimple,
+    svgpatternusgs
 RoxygenNote: 6.1.99.9001
