@@ -274,6 +274,37 @@ invisible(dev.off())
 
 <img src="man/figures/example-usgs.svg" />
 
+## Retro plotting
+
+``` r
+f <- svgpatternsimple::encode_pattern_params_as_hex_colour
+
+colours <- c(
+  `2seater`  = f(pattern_name = 'stripe', spacing =  5, fill_fraction = 0.7, angle = 0),
+  compact    = f(pattern_name = 'stripe', spacing =  5, fill_fraction = 0.7, angle = 45),
+  midsize    = f(pattern_name = 'stripe', spacing =  5, fill_fraction = 0.7, angle = 135),
+  minivan    = f(pattern_name = 'hatch' , spacing =  7, fill_fraction = 0.2, angle = 0),
+  pickup     = f(pattern_name = 'hatch' , spacing =  7, fill_fraction = 0.2, angle = 45),
+  subcompact = f(pattern_name = 'dot'   , spacing =  4, fill_fraction = 0.8, angle = 0),
+  suv        = f(pattern_name = 'dot'   , spacing =  8, fill_fraction = 0.7)
+)
+
+
+devoutsvg::svgout(filename = "man/figures/example-retro.svg", pattern_pkg = 'svgpatternsimple')
+ggplot(mpg) +
+  geom_bar(aes(class, fill=class), colour='black') + 
+  theme_bw() + 
+  theme(
+    panel.grid = element_blank(),
+    text       = element_text(size=12,  family="Courier New", face = 'bold'),
+    legend.position = 'none'
+  ) + 
+  scale_fill_manual(values = colours)
+invisible(dev.off())
+```
+
+<img src="man/figures/example-retro.svg" />
+
 ## SVG to PDF
 
 If you need a PDF version of an SVG file, there are a number of options.
