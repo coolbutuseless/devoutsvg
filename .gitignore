@@ -7,3 +7,5 @@ working
 *.txt
 inst/doc
 pkgdown
+doc
+Meta

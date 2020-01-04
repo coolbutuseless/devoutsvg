@@ -63,8 +63,7 @@ When `svgout` is asked to render a colour, it instead asks `pattern_pkg`
 to `**decode**hex_colour_as_pattern_params` and returns the desired SVG
 pattern snippet.
 
-Some examples of pattern packages
-    are:
+Some examples of pattern packages are:
 
   - [`svgpatternsimple`](https://github.com/coolbutuseless/svgpatternsimple)
   - [`svgpatternusgs`](https://github.com/coolbutuseless/svgpatternusgs)
@@ -171,8 +170,7 @@ options are as follows:
 
 In this following example, the choice of possible patterns is limited to
 ‘stripe’ and ‘hatch’, all at 45 degrees, with a range of `fill_fraction`
-and
-`spacing`
+and `spacing`
 
 ``` r
 svgout(pattern_pkg = 'svgpatternsimple', filename = "man/figures/example-patternsimple-scale-fill.svg",
@@ -305,7 +303,27 @@ invisible(dev.off())
 
 <img src="man/figures/example-retro.svg" />
 
-## SVG to PDF
+## Real-world examples
+
+The following was created by
+[VictimOfMaths](https://twitter.com/VictimOfmaths) to compare deaths
+over time based upon [UK ONS
+data](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandwellbeing/articles/middleagedgenerationmostlikelytodiebysuicideanddrugpoisoning/2019-08-13).
+
+The original code is on [VictimOfMaths github](), and a modified version
+is included as a vignette (`vignette('svg-with-gradient-fill', package =
+'devoutsvg')`) - see also the [online devoutsvg
+documentation](https://coolbutuseless.github.io/package/devoutsvg/articles/svg-with-gradient-fill.html)
+
+<img src="man/figures/gradient-examples/VictimOfMaths.png" width="45%">
+
+A similar approach was used by
+[MilesMcbain](https://twitter.com/MilesMcBain) to create this plot of
+fire season workloads:
+
+<img src="man/figures/gradient-examples/MilesMcbain.jpg" width="75%">
+
+## Convert SVG to PDF
 
 If you need a PDF version of an SVG file, there are a number of options.
 

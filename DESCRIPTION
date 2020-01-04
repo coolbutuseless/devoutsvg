@@ -10,6 +10,7 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/coolbutuseless/devoutsvg,https://coolbutuseless.github.io/package/devoutsvg
 Depends:
+    R (>= 3.5.0),
     devout
 Imports:
     gdtools,
@@ -17,5 +18,12 @@ Imports:
     minisvg
 Suggests:
     svgpatternsimple,
-    svgpatternusgs
-RoxygenNote: 6.1.99.9001
+    svgpatternusgs,
+    knitr,
+    rmarkdown,
+    dplyr,
+    tidyr,
+    ggplot2,
+    ggridges
+RoxygenNote: 7.0.2
+VignetteBuilder: knitr

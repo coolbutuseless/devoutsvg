@@ -359,12 +359,29 @@ invisible(dev.off())
 ```
 
 
-
 <img src="man/figures/example-retro.svg" />
 
 
+## Real-world examples
 
-## SVG to PDF
+The following was created by [VictimOfMaths](https://twitter.com/VictimOfmaths)
+to compare deaths over time based upon [UK ONS data](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandwellbeing/articles/middleagedgenerationmostlikelytodiebysuicideanddrugpoisoning/2019-08-13).
+
+The original code is on [VictimOfMaths github](), and a modified version is 
+included as a vignette (`vignette('svg-with-gradient-fill', package = 'devoutsvg')`) - see 
+also the [online devoutsvg documentation](https://coolbutuseless.github.io/package/devoutsvg/articles/svg-with-gradient-fill.html)
+
+<img src="man/figures/gradient-examples/VictimOfMaths.png" width="45%">
+
+
+A similar approach was used by [MilesMcbain](https://twitter.com/MilesMcBain) to 
+create this plot of fire season workloads:
+
+<img src="man/figures/gradient-examples/MilesMcbain.jpg" width="75%">
+
+
+
+## Convert SVG to PDF
 
 If you need a PDF version of an SVG file, there are a number of options.
 

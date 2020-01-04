@@ -30,7 +30,7 @@
       <line style="stroke:#000000; stroke-width:2; stroke-opacity:1;" x1="0" y1="0" x2="0" y2="2" />
     </pattern>
   </defs>
-  <rect style="fill: url(#simple-205700FF); stroke-width: 1.07" clip-path="url(#clip_35_09_254_58_426_52_5_48)" x="43.25" y="224.99" width="48.93" height="18.26" />
+  <rect style="fill: url(#simple-205700FF); stroke-width: 1.07" clip-path="url(#clip_35_09_254_58_426_52_5_48)" x="43.24" y="225" width="48.93" height="18.26" />
   <defs>
     <pattern id="simple-285700FF" width="2" height="2" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
       <rect style="fill:#ffffff; fill-opacity:1; stroke:none;" width="100%" height="100%" />
@@ -44,7 +44,7 @@
       <line style="stroke:#000000; stroke-width:2; stroke-opacity:1;" x1="0" y1="0" x2="0" y2="2" />
     </pattern>
   </defs>
-  <rect style="fill: url(#simple-385700FF); stroke-width: 1.07" clip-path="url(#clip_35_09_254_58_426_52_5_48)" x="151.98" y="93.5" width="48.93" height="149.75" />
+  <rect style="fill: url(#simple-385700FF); stroke-width: 1.07" clip-path="url(#clip_35_09_254_58_426_52_5_48)" x="151.97" y="93.51" width="48.93" height="149.75" />
   <defs>
     <pattern id="simple-601F00FF" width="2" height="2" patternTransform="rotate(0 0 0)" patternUnits="userSpaceOnUse">
       <rect style="fill:#ffffff; fill-opacity:1; stroke:none;" width="100%" height="100%" />
@@ -64,7 +64,7 @@
       </g>
     </pattern>
   </defs>
-  <rect style="fill: url(#simple-701F00FF); stroke-width: 1.07" clip-path="url(#clip_35_09_254_58_426_52_5_48)" x="260.71" y="122.72" width="48.93" height="120.53" />
+  <rect style="fill: url(#simple-701F00FF); stroke-width: 1.07" clip-path="url(#clip_35_09_254_58_426_52_5_48)" x="260.71" y="122.73" width="48.93" height="120.53" />
   <defs>
     <pattern id="simple-406700FF" width="5" height="5" patternTransform="rotate(0 0 0)" patternUnits="userSpaceOnUse">
       <rect style="fill:#ffffff; fill-opacity:1; stroke:none;" width="100%" height="100%" />
@@ -78,25 +78,25 @@
       <circle style="stroke:#000000; fill:#000000; fill-opacity:1; stroke-opacity:1;" cx="2.5" cy="2.5" r="1.59" />
     </pattern>
   </defs>
-  <rect style="fill: url(#simple-485700FF); stroke-width: 1.07" clip-path="url(#clip_35_09_254_58_426_52_5_48)" x="369.44" y="16.8" width="48.93" height="226.45" />
+  <rect style="fill: url(#simple-485700FF); stroke-width: 1.07" clip-path="url(#clip_35_09_254_58_426_52_5_48)" x="369.44" y="16.8" width="48.93" height="226.46" />
   <rect style="fill: #FFFFFF; fill-opacity: 0; stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_35_09_254_58_426_52_5_48)" x="35.09" y="5.48" width="391.43" height="249.1" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="5.76px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="24.82" y="246.7" lengthAdjust="spacingAndGlyphs">
+    <text textLength="6px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="24.82" y="246.7" lengthAdjust="spacingAndGlyphs">
       0
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="11.52px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="19.48" y="173.65" lengthAdjust="spacingAndGlyphs">
+    <text textLength="12px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="19.48" y="173.65" lengthAdjust="spacingAndGlyphs">
       20
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="11.52px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="19.48" y="100.6" lengthAdjust="spacingAndGlyphs">
+    <text textLength="12px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="19.48" y="100.6" lengthAdjust="spacingAndGlyphs">
       40
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="11.52px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="19.48" y="27.55" lengthAdjust="spacingAndGlyphs">
+    <text textLength="12px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="19.48" y="27.54" lengthAdjust="spacingAndGlyphs">
       60
     </text>
   </g>
@@ -107,47 +107,47 @@
   <polyline points="67.71,257.32 67.71,254.58" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
   <polyline points="122.07,257.32 122.07,254.58" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
   <polyline points="176.44,257.32 176.44,254.58" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
-  <polyline points="230.81,257.32 230.81,254.58" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
+  <polyline points="230.8,257.32 230.8,254.58" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
   <polyline points="285.17,257.32 285.17,254.58" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
   <polyline points="339.54,257.32 339.54,254.58" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
   <polyline points="393.9,257.32 393.9,254.58" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="40.33px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="51.7" y="266.4" lengthAdjust="spacingAndGlyphs">
+    <text textLength="42.01px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="51.71" y="266.39" lengthAdjust="spacingAndGlyphs">
       2seater
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="40.33px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="103.93" y="266.4" lengthAdjust="spacingAndGlyphs">
+    <text textLength="42.01px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="103.94" y="266.39" lengthAdjust="spacingAndGlyphs">
       compact
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="40.33px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="160.17" y="266.4" lengthAdjust="spacingAndGlyphs">
+    <text textLength="42.01px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="160.18" y="266.39" lengthAdjust="spacingAndGlyphs">
       midsize
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="40.33px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="214.27" y="266.4" lengthAdjust="spacingAndGlyphs">
+    <text textLength="42.01px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="214.27" y="266.39" lengthAdjust="spacingAndGlyphs">
       minivan
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="34.57px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="271.3" y="266.4" lengthAdjust="spacingAndGlyphs">
+    <text textLength="36.01px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="271.3" y="266.39" lengthAdjust="spacingAndGlyphs">
       pickup
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="57.61px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="313.66" y="266.4" lengthAdjust="spacingAndGlyphs">
+    <text textLength="60.01px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="313.67" y="266.39" lengthAdjust="spacingAndGlyphs">
       subcompact
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.28px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="386.43" y="266.4" lengthAdjust="spacingAndGlyphs">
+    <text textLength="18px" style="font-size: 9.6px; font-family: Courier New; fill: #4D4D4D" x="386.44" y="266.39" lengthAdjust="spacingAndGlyphs">
       suv
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="36.01px" style="font-size: 12px; font-family: Courier New" x="217.14" y="279.87" lengthAdjust="spacingAndGlyphs">
+    <text textLength="36.01px" style="font-size: 12px; font-family: Courier New" x="217.13" y="279.86" lengthAdjust="spacingAndGlyphs">
       class
     </text>
   </g>
