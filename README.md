@@ -106,6 +106,7 @@ c(gear4_colour, gear6_colour, gear8_colour)
 
 
 svgout(filename = "man/figures/example-manual.svg", pattern_pkg = 'svgpatternsimple')
+#> pattern_pkg: svgpatternsimple
 ggplot(mtcars) + 
   geom_bar(aes(as.factor(cyl), fill = as.factor(cyl)), colour = 'black') + 
   labs(title = basename("Example - manual pattern specification")) + 
@@ -142,6 +143,7 @@ patterns.
 
 ``` r
 svgout(pattern_pkg = 'svgpatternsimple', filename = "man/figures/example-scale-fill-2.svg")
+#> pattern_pkg: svgpatternsimple
 ggplot(mtcars) + 
   geom_bar(aes(as.factor(cyl), fill = as.factor(cyl)), colour = 'black') + 
   labs(title = "scale_fill_pattern_simple() - defaults") + 
@@ -175,6 +177,7 @@ and `spacing`
 ``` r
 svgout(pattern_pkg = 'svgpatternsimple', filename = "man/figures/example-patternsimple-scale-fill.svg",
        width = 8, height = 6)
+#> pattern_pkg: svgpatternsimple
 ggplot(mtcars) + 
   geom_density(aes(mpg, fill = interaction(cyl, am)), alpha = 1) +
   theme_bw() +
@@ -221,6 +224,7 @@ colours <- c(
 
 
 devoutsvg::svgout(pattern_pkg = 'svgpatternsimple', filename = "man/figures/example-pie.svg")
+#> pattern_pkg: svgpatternsimple
 pie(c(cool = 4, but = 2, use = 1, less = 8), col = colours)
 invisible(dev.off())
 ```
@@ -261,6 +265,7 @@ colours <- c(
 )
 
 devoutsvg::svgout(filename = "man/figures/example-usgs.svg", pattern_pkg = 'svgpatternusgs')
+#> pattern_pkg: svgpatternusgs
 ggplot(nc) +
   geom_sf(aes(fill = NAME)) +
   scale_fill_manual(values = colours) + 
@@ -289,6 +294,7 @@ colours <- c(
 
 
 devoutsvg::svgout(filename = "man/figures/example-retro.svg", pattern_pkg = 'svgpatternsimple')
+#> pattern_pkg: svgpatternsimple
 ggplot(mpg) +
   geom_bar(aes(class, fill=class), colour='black') + 
   theme_bw() + 

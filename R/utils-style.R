@@ -101,6 +101,12 @@ fill_style <- function(state, use_pattern_fill) {
   if (pattern_ok) {
     pattern_id <- create_pattern_id_from_rgba_vec(pattern_pkg, fill)
     style      <- glue_two("fill: url(#{pattern_id})")
+
+    # Optionally may have a filter ID as well
+    filter_id <- attr(pattern_id, "filter_id")
+    if (!is.null(filter_id)) {
+      style <- glue::glue("{style}; filter: url(#{filter_id})")
+    }
   } else {
     style <- glue_two("fill: {vec2rgb(fill)}")
 

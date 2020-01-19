@@ -2380,107 +2380,107 @@
   <polygon points="137.640665209801,188.545650110248 101.822880740172,188.039336105143 67.148696498183,186.454049496055 67.7078212400217,144.924952660063 84.6322595842939,141.562329302019 87.6602651131435,138.527937092112 90.1953395093896,139.33803950028 93.5543130844158,137.8592534233 95.4612523802587,139.297883561944 100.515909051441,139.156464822587 105.908575642122,142.128877214628 113.870117621,135.950973397162 120.093725263784,137.054388746219 126.821531036488,134.730582053822 128.508763884656,135.136506213088 130.0100912771,139.695078169398 141.177093992564,140.155125549899 144.876894236419,142.939852577978 147.744345053506,148.219485513973 147.006356729266,170.229304497973 138.29837617816,173.801437099509 135.897097375049,176.720599225496 135.295721393273,182.225454598244 137.640665209801,188.545650110248" style="stroke: #595959; stroke-width: 1.07; fill: url(#usgs-632-766FF0FF)" clip-path="url(#clip_37_4_231_11_332_95_61_39)" />
   <rect style="fill: #FFFFFF; fill-opacity: 0; stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_37_4_231_11_332_95_61_39)" x="37.4" y="61.39" width="295.55" height="169.72" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="5.48" y="224.4" lengthAdjust="spacingAndGlyphs">
+    <text x="5.48" y="224.4" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       35.9
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="22.6" y="224.4" lengthAdjust="spacingAndGlyphs">
+    <text x="22.6" y="224.4" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="26.12" y="224.4" lengthAdjust="spacingAndGlyphs">
+    <text x="26.12" y="224.4" lengthAdjust="spacingAndGlyphs" textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       N
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="9.78px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="12.82" y="201.52" lengthAdjust="spacingAndGlyphs">
+    <text x="12.82" y="201.52" lengthAdjust="spacingAndGlyphs" textLength="9.78px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       36
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="22.6" y="201.52" lengthAdjust="spacingAndGlyphs">
+    <text x="22.6" y="201.52" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="26.12" y="201.52" lengthAdjust="spacingAndGlyphs">
+    <text x="26.12" y="201.52" lengthAdjust="spacingAndGlyphs" textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       N
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="5.48" y="178.63" lengthAdjust="spacingAndGlyphs">
+    <text x="5.48" y="178.63" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       36.1
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="22.6" y="178.63" lengthAdjust="spacingAndGlyphs">
+    <text x="22.6" y="178.63" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="26.12" y="178.63" lengthAdjust="spacingAndGlyphs">
+    <text x="26.12" y="178.63" lengthAdjust="spacingAndGlyphs" textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       N
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="5.48" y="155.75" lengthAdjust="spacingAndGlyphs">
+    <text x="5.48" y="155.75" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       36.2
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="22.6" y="155.75" lengthAdjust="spacingAndGlyphs">
+    <text x="22.6" y="155.75" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="26.12" y="155.75" lengthAdjust="spacingAndGlyphs">
+    <text x="26.12" y="155.75" lengthAdjust="spacingAndGlyphs" textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       N
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="5.48" y="132.87" lengthAdjust="spacingAndGlyphs">
+    <text x="5.48" y="132.87" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       36.3
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="22.6" y="132.87" lengthAdjust="spacingAndGlyphs">
+    <text x="22.6" y="132.87" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="26.12" y="132.87" lengthAdjust="spacingAndGlyphs">
+    <text x="26.12" y="132.87" lengthAdjust="spacingAndGlyphs" textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       N
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="5.48" y="109.98" lengthAdjust="spacingAndGlyphs">
+    <text x="5.48" y="109.98" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       36.4
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="22.6" y="109.98" lengthAdjust="spacingAndGlyphs">
+    <text x="22.6" y="109.98" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="26.12" y="109.98" lengthAdjust="spacingAndGlyphs">
+    <text x="26.12" y="109.98" lengthAdjust="spacingAndGlyphs" textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       N
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="5.48" y="87.1" lengthAdjust="spacingAndGlyphs">
+    <text x="5.48" y="87.1" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       36.5
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="22.6" y="87.1" lengthAdjust="spacingAndGlyphs">
+    <text x="22.6" y="87.1" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="26.12" y="87.1" lengthAdjust="spacingAndGlyphs">
+    <text x="26.12" y="87.1" lengthAdjust="spacingAndGlyphs" textLength="6.35px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       N
     </text>
   </g>
@@ -2500,128 +2500,128 @@
   <polyline points="266.04,233.85 266.04,231.11" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
   <polyline points="302.96,233.85 302.96,231.11" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="9.78px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="33.72" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="33.72" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="9.78px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       81
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="43.5" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="43.5" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="47.02" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="47.02" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       W
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="66.97" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="66.97" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       80.8
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="84.09" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="84.09" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="87.61" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="87.61" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       W
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="103.89" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="103.89" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       80.6
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="121.01" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="121.01" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="124.53" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="124.53" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       W
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="140.81" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="140.81" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       80.4
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="157.93" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="157.93" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="161.45" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="161.45" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       W
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="177.73" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="177.73" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       80.2
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="194.85" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="194.85" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="198.37" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="198.37" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       W
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="9.78px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="218.31" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="218.31" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="9.78px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       80
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="228.1" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="228.1" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="231.62" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="231.62" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       W
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="251.57" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="251.57" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       79.8
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="268.69" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="268.69" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="272.21" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="272.21" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       W
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="288.49" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="288.49" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="17.12px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       79.6
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D" x="305.61" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="305.61" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="3.82px" style="font-size: 8.8px; font-family: PT Serif; fill: #4D4D4D">
       °
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="309.12" y="242.36" lengthAdjust="spacingAndGlyphs">
+    <text x="309.12" y="242.36" lengthAdjust="spacingAndGlyphs" textLength="8.3px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       W
     </text>
   </g>
   <rect style="fill: #FFFFFF; stroke: none" clip-path="url(#clip_0_288_432_0)" x="343.91" y="81.03" width="82.61" height="130.45" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="31.78px" style="font-size: 11px; font-family: Helvetica" x="349.39" y="95.62" lengthAdjust="spacingAndGlyphs">
+    <text x="349.39" y="95.62" lengthAdjust="spacingAndGlyphs" textLength="31.78px" style="font-size: 11px; font-family: Helvetica">
       NAME
     </text>
   </g>
@@ -2638,37 +2638,37 @@
   <rect style="fill: #FFFFFF; stroke: none" clip-path="url(#clip_0_288_432_0)" x="349.39" y="188.71" width="17.28" height="17.28" />
   <rect style="fill: url(#usgs-632-766FF0FF); stroke: #595959; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" x="350.1" y="189.42" width="15.86" height="15.86" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="29.33px" style="font-size: 8.8px; font-family: Helvetica" x="372.15" y="114.11" lengthAdjust="spacingAndGlyphs">
+    <text x="372.15" y="114.11" lengthAdjust="spacingAndGlyphs" textLength="29.33px" style="font-size: 8.8px; font-family: Helvetica">
       Forsyth
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="30.8px" style="font-size: 8.8px; font-family: Helvetica" x="372.15" y="131.39" lengthAdjust="spacingAndGlyphs">
+    <text x="372.15" y="131.39" lengthAdjust="spacingAndGlyphs" textLength="30.8px" style="font-size: 8.8px; font-family: Helvetica">
       Guilford
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="48.89px" style="font-size: 8.8px; font-family: Helvetica" x="372.15" y="148.67" lengthAdjust="spacingAndGlyphs">
+    <text x="372.15" y="148.67" lengthAdjust="spacingAndGlyphs" textLength="48.89px" style="font-size: 8.8px; font-family: Helvetica">
       Rockingham
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="26.89px" style="font-size: 8.8px; font-family: Helvetica" x="372.15" y="165.95" lengthAdjust="spacingAndGlyphs">
+    <text x="372.15" y="165.95" lengthAdjust="spacingAndGlyphs" textLength="26.89px" style="font-size: 8.8px; font-family: Helvetica">
       Stokes
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="21.02px" style="font-size: 8.8px; font-family: Helvetica" x="372.15" y="183.23" lengthAdjust="spacingAndGlyphs">
+    <text x="372.15" y="183.23" lengthAdjust="spacingAndGlyphs" textLength="21.02px" style="font-size: 8.8px; font-family: Helvetica">
       Surry
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="26.9px" style="font-size: 8.8px; font-family: Helvetica" x="372.15" y="200.51" lengthAdjust="spacingAndGlyphs">
+    <text x="372.15" y="200.51" lengthAdjust="spacingAndGlyphs" textLength="26.9px" style="font-size: 8.8px; font-family: Helvetica">
       Yadkin
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="288.37px" style="font-size: 13.2px; font-family: Helvetica" x="37.4" y="52.99" lengthAdjust="spacingAndGlyphs">
+    <text x="37.4" y="52.99" lengthAdjust="spacingAndGlyphs" textLength="288.37px" style="font-size: 13.2px; font-family: Helvetica">
       U.S. Geological Survey Patterns with `geom_sf()`
     </text>
   </g>

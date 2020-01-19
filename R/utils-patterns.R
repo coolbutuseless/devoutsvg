@@ -52,6 +52,9 @@ write_pattern <- function(state, ...) {
   if (!pattern_id %in% state$rdata$all_pattern_ids) {
     state$rdata$all_pattern_ids <- c(state$rdata$all_pattern_ids, pattern_id)
 
+    if (!is.null(pattern$filter_def)) {
+      state$rdata$msvg$defs(pattern$filter_def)
+    }
     state$rdata$msvg$defs(pattern)
 
   }

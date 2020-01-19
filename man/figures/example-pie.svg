@@ -19,7 +19,7 @@
   </defs>
   <defs>
     <pattern id="simple-024D2BFF" width="100" height="100" patternUnits="userSpaceOnUse">
-      <rect style="fill:#123456; fill-opacity:1; stroke:none;" width="100%" height="100%" />
+      <rect width="100%" height="100%" style="fill:#123456; fill-opacity:1; stroke:none;" />
     </pattern>
   </defs>
   <polygon points="288,136.8 287.97,134.94 287.88,133.09 287.73,131.24 287.52,129.4 287.25,127.56 286.93,125.73 286.54,123.92 286.1,122.12 285.59,120.33 285.04,118.56 284.42,116.81 283.75,115.08 283.02,113.37 282.24,111.69 281.4,110.03 280.51,108.4 279.57,106.8 278.58,105.23 277.54,103.7 276.45,102.2 275.31,100.73 274.12,99.3 272.89,97.91 271.62,96.57 270.3,95.26 268.94,93.99 267.54,92.78 266.11,91.6 264.63,90.47 263.12,89.4 261.58,88.37 260,87.39 258.39,86.46 256.76,85.58 255.09,84.76 253.4,83.99 251.69,83.28 249.95,82.62 248.2,82.02 246.43,81.47 244.63,80.99 242.83,80.56 241.01,80.19 239.18,79.87 237.34,79.62 235.5,79.43 233.65,79.29 231.79,79.22 229.94,79.2 228.08,79.25 226.23,79.35 224.38,79.52 230.4,136.8" style="fill: url(#simple-024D2BFF); stroke-width: 0.75" clip-path="url(#clip_59_04_214_56_401_76_59_04)" />
@@ -30,13 +30,13 @@
     </clipPath>
   </defs>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="22.01px" style="font-size: 12px; font-family: Helvetica" x="272.8" y="93.9" lengthAdjust="spacingAndGlyphs">
+    <text x="272.8" y="93.9" lengthAdjust="spacingAndGlyphs" textLength="22.01px" style="font-size: 12px; font-family: Helvetica">
       cool
     </text>
   </g>
   <defs>
     <pattern id="simple-9D213FFF" width="164.516129032258" height="164.516129032258" patternUnits="userSpaceOnUse">
-      <rect style="fill:#ffffff; fill-opacity:1; stroke:none;" width="100%" height="100%" />
+      <rect width="100%" height="100%" style="fill:#ffffff; fill-opacity:1; stroke:none;" />
       <g>
         <circle cx='-6.86' cy='16.59' r='1.64516129032258' style='fill: #FF4955; stroke: #FF4955; fill-opacity: 1; stroke-opacity: 1' />
 <circle cx='-0.26' cy='27.73' r='1.64516129032258' style='fill: #FF4955; stroke: #FF4955; fill-opacity: 1; stroke-opacity: 1' />
@@ -200,13 +200,13 @@
   <polygon points="224.38,79.52 222.46,79.75 220.56,80.05 218.66,80.41 216.78,80.83 214.91,81.32 213.06,81.87 211.23,82.48 209.42,83.16 207.64,83.89 205.88,84.68 204.14,85.53 202.44,86.44 200.77,87.41 199.13,88.43 197.53,89.5 195.96,90.63 194.43,91.81 192.95,93.04 191.5,94.32 190.1,95.65 188.74,97.02 187.43,98.44 186.17,99.9 184.96,101.4 183.8,102.94 230.4,136.8" style="fill: url(#simple-9D213FFF); stroke-width: 0.75" clip-path="url(#clip_59_04_214_56_401_76_59_04)" />
   <polyline points="201.6,86.92 200.16,84.42" style="stroke-width: 0.75" clip-path="url(#clip_59_04_214_56_401_76_59_04)" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="16.68px" style="font-size: 12px; font-family: Helvetica" x="182.04" y="86.15" lengthAdjust="spacingAndGlyphs">
+    <text x="182.04" y="86.15" lengthAdjust="spacingAndGlyphs" textLength="16.68px" style="font-size: 12px; font-family: Helvetica">
       but
     </text>
   </g>
   <defs>
     <pattern id="simple-A81FDDFF" width="3.46410161513775" height="6" patternTransform="rotate(22.5 0 0)" patternUnits="userSpaceOnUse">
-      <rect style="fill:#ffffff; fill-opacity:1; stroke:none;" width="100%" height="100%" />
+      <rect width="100%" height="100%" style="fill:#ffffff; fill-opacity:1; stroke:none;" />
       <g style="stroke:#DBFF55; stroke-width:1; stroke-opacity:1;">
         <line x1="1.73205080756888" y1="1" x2="0" y2="2" />
         <line x1="1.73205080756888" y1="1" x2="3.46410161513775" y2="2" />
@@ -222,23 +222,23 @@
   <polygon points="183.8,102.94 182.65,104.59 181.55,106.28 180.52,108 179.54,109.76 178.63,111.55 177.78,113.37 176.99,115.22 176.27,117.1 175.62,119 175.03,120.92 174.51,122.87 174.06,124.82 230.4,136.8" style="fill: url(#simple-A81FDDFF); stroke-width: 0.75" clip-path="url(#clip_59_04_214_56_401_76_59_04)" />
   <polyline points="177.78,113.37 175.15,112.2" style="stroke-width: 0.75" clip-path="url(#clip_59_04_214_56_401_76_59_04)" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="19.35px" style="font-size: 12px; font-family: Helvetica" x="153.17" y="114.13" lengthAdjust="spacingAndGlyphs">
+    <text x="153.17" y="114.13" lengthAdjust="spacingAndGlyphs" textLength="19.35px" style="font-size: 12px; font-family: Helvetica">
       use
     </text>
   </g>
   <defs>
     <pattern id="simple-F00FEBFF" width="17" height="17" patternTransform="rotate(45.7142857142857 0 0)" patternUnits="userSpaceOnUse">
-      <rect style="fill:#ffffff; fill-opacity:1; stroke:none;" width="100%" height="100%" />
+      <rect width="100%" height="100%" style="fill:#ffffff; fill-opacity:1; stroke:none;" />
       <g>
-        <rect style="fill:#FF49FF; fill-opacity:1;" x="0" y="0" width="8.5" height="8.5" />
-        <rect style="fill:#FF49FF; fill-opacity:1;" x="8.5" y="8.5" width="8.5" height="8.5" />
+        <rect x="0" y="0" width="8.5" height="8.5" style="fill:#FF49FF; fill-opacity:1;" />
+        <rect x="8.5" y="8.5" width="8.5" height="8.5" style="fill:#FF49FF; fill-opacity:1;" />
       </g>
     </pattern>
   </defs>
   <polygon points="174.06,124.82 173.71,126.63 173.41,128.44 173.17,130.27 172.99,132.09 172.87,133.93 172.81,135.77 172.81,137.6 172.86,139.44 172.97,141.28 173.15,143.11 173.38,144.93 173.67,146.75 174.01,148.55 174.42,150.34 174.88,152.12 175.39,153.89 175.97,155.63 176.59,157.36 177.28,159.07 178.02,160.75 178.81,162.41 179.65,164.04 180.55,165.65 181.49,167.23 182.49,168.77 183.53,170.28 184.62,171.76 185.76,173.2 186.95,174.61 188.18,175.98 189.45,177.31 190.76,178.59 192.11,179.84 193.51,181.03 194.94,182.19 196.4,183.3 197.91,184.36 199.44,185.37 201.01,186.33 202.6,187.25 204.22,188.11 205.88,188.92 207.55,189.67 209.25,190.38 210.97,191.02 212.71,191.62 214.47,192.15 216.24,192.63 218.03,193.06 219.83,193.42 221.64,193.73 223.47,193.98 225.29,194.17 227.13,194.31 228.96,194.38 230.8,194.4 232.64,194.36 234.48,194.26 236.31,194.1 238.13,193.88 239.95,193.6 241.76,193.27 243.55,192.88 245.34,192.43 247.1,191.92 248.85,191.36 250.59,190.75 252.3,190.08 253.99,189.35 255.65,188.57 257.29,187.74 258.9,186.85 260.48,185.92 262.04,184.93 263.56,183.9 265.04,182.82 266.49,181.69 267.91,180.52 269.28,179.3 270.62,178.03 271.91,176.73 273.17,175.38 274.38,174 275.54,172.58 276.66,171.12 277.73,169.63 278.75,168.1 279.73,166.54 280.65,164.95 281.52,163.33 282.35,161.69 283.11,160.02 283.83,158.32 284.49,156.61 285.09,154.87 285.64,153.12 286.13,151.35 286.57,149.56 286.95,147.76 287.27,145.95 287.53,144.13 287.74,142.31 287.88,140.47 287.97,138.64 288,136.8 230.4,136.8" style="fill: url(#simple-F00FEBFF); stroke-width: 0.75" clip-path="url(#clip_59_04_214_56_401_76_59_04)" />
   <polyline points="224.38,194.08 224.08,196.95" style="stroke-width: 0.75" clip-path="url(#clip_59_04_214_56_401_76_59_04)" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="21.34px" style="font-size: 12px; font-family: Helvetica" x="202.44" y="204" lengthAdjust="spacingAndGlyphs">
+    <text x="202.44" y="204" lengthAdjust="spacingAndGlyphs" textLength="21.34px" style="font-size: 12px; font-family: Helvetica">
       less
     </text>
   </g>

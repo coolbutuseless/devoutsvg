@@ -35,13 +35,13 @@
   <polyline points="283.83,256.26 283.83,23.35" style="stroke: #EBEBEB; stroke-width: 1.07" clip-path="url(#clip_33_26_256_26_341_65_23_35)" />
   <defs>
     <pattern id="simple-024D2BFF" width="100" height="100" patternUnits="userSpaceOnUse">
-      <rect style="fill:#123456; fill-opacity:1; stroke:none;" width="100%" height="100%" />
+      <rect width="100%" height="100%" style="fill:#123456; fill-opacity:1; stroke:none;" />
     </pattern>
   </defs>
   <rect style="fill: url(#simple-024D2BFF); stroke-width: 1.07" clip-path="url(#clip_33_26_256_26_341_65_23_35)" x="47.72" y="79.31" width="86.73" height="166.36" />
   <defs>
     <pattern id="simple-9D213FFF" width="164.516129032258" height="164.516129032258" patternUnits="userSpaceOnUse">
-      <rect style="fill:#ffffff; fill-opacity:1; stroke:none;" width="100%" height="100%" />
+      <rect width="100%" height="100%" style="fill:#ffffff; fill-opacity:1; stroke:none;" />
       <g>
         <circle cx='-2.97' cy='-1.78' r='1.64516129032258' style='fill: #FF4955; stroke: #FF4955; fill-opacity: 1; stroke-opacity: 1' />
 <circle cx='-6.42' cy='19.71' r='1.64516129032258' style='fill: #FF4955; stroke: #FF4955; fill-opacity: 1; stroke-opacity: 1' />
@@ -208,7 +208,7 @@
   <rect style="fill: url(#simple-9D213FFF); stroke-width: 1.07" clip-path="url(#clip_33_26_256_26_341_65_23_35)" x="144.09" y="139.8" width="86.73" height="105.87" />
   <defs>
     <pattern id="simple-A09708FF" width="29.4448637286709" height="51" patternTransform="rotate(0 0 0)" patternUnits="userSpaceOnUse">
-      <rect style="fill:#ffffff; fill-opacity:1; stroke:none;" width="100%" height="100%" />
+      <rect width="100%" height="100%" style="fill:#ffffff; fill-opacity:1; stroke:none;" />
       <g style="stroke:#004900; stroke-width:3.62666666666667; stroke-opacity:1;">
         <line x1="14.7224318643355" y1="8.5" x2="0" y2="17" />
         <line x1="14.7224318643355" y1="8.5" x2="29.4448637286709" y2="17" />
@@ -224,17 +224,17 @@
   <rect style="fill: url(#simple-A09708FF); stroke-width: 1.07" clip-path="url(#clip_33_26_256_26_341_65_23_35)" x="240.46" y="33.94" width="86.73" height="211.73" />
   <rect style="fill: #FFFFFF; fill-opacity: 0; stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_33_26_256_26_341_65_23_35)" x="33.26" y="23.35" width="308.38" height="232.91" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="23.44" y="248.83" lengthAdjust="spacingAndGlyphs">
+    <text x="23.44" y="248.83" lengthAdjust="spacingAndGlyphs" textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       0
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="23.44" y="173.21" lengthAdjust="spacingAndGlyphs">
+    <text x="23.44" y="173.21" lengthAdjust="spacingAndGlyphs" textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       5
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="9.78px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="18.55" y="97.59" lengthAdjust="spacingAndGlyphs">
+    <text x="18.55" y="97.59" lengthAdjust="spacingAndGlyphs" textLength="9.78px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       10
     </text>
   </g>
@@ -245,33 +245,33 @@
   <polyline points="187.46,259 187.46,256.26" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
   <polyline points="283.83,259 283.83,256.26" style="stroke: #333333; stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="88.64" y="267.5" lengthAdjust="spacingAndGlyphs">
+    <text x="88.64" y="267.5" lengthAdjust="spacingAndGlyphs" textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       4
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="185.01" y="267.5" lengthAdjust="spacingAndGlyphs">
+    <text x="185.01" y="267.5" lengthAdjust="spacingAndGlyphs" textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       6
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D" x="281.38" y="267.5" lengthAdjust="spacingAndGlyphs">
+    <text x="281.38" y="267.5" lengthAdjust="spacingAndGlyphs" textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica; fill: #4D4D4D">
       8
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="62.95px" style="font-size: 11px; font-family: Helvetica" x="155.98" y="280.08" lengthAdjust="spacingAndGlyphs">
+    <text x="155.98" y="280.08" lengthAdjust="spacingAndGlyphs" textLength="62.95px" style="font-size: 11px; font-family: Helvetica">
       as.factor(cyl)
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="26.91px" style="font-size: 11px; font-family: Helvetica" x="13.37" y="153.26" lengthAdjust="spacingAndGlyphs" transform="rotate(-90 13.37 153.26)">
+    <text x="13.37" y="153.26" lengthAdjust="spacingAndGlyphs" textLength="26.91px" style="font-size: 11px; font-family: Helvetica" transform="rotate(-90 13.37 153.26)">
       count
     </text>
   </g>
   <rect style="fill: #FFFFFF; stroke: none" clip-path="url(#clip_0_288_432_0)" x="352.61" y="62.64" width="73.91" height="154.33" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="62.95px" style="font-size: 11px; font-family: Helvetica" x="358.09" y="77.23" lengthAdjust="spacingAndGlyphs">
+    <text x="358.09" y="77.23" lengthAdjust="spacingAndGlyphs" textLength="62.95px" style="font-size: 11px; font-family: Helvetica">
       as.factor(cyl)
     </text>
   </g>
@@ -282,22 +282,22 @@
   <rect style="fill: #FFFFFF; stroke: none" clip-path="url(#clip_0_288_432_0)" x="358.09" y="168.97" width="42.52" height="42.52" />
   <rect style="fill: url(#simple-A09708FF); stroke-width: 1.07" clip-path="url(#clip_0_288_432_0)" x="358.8" y="169.67" width="41.1" height="41.1" />
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica" x="406.09" y="108.34" lengthAdjust="spacingAndGlyphs">
+    <text x="406.09" y="108.34" lengthAdjust="spacingAndGlyphs" textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica">
       4
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica" x="406.09" y="150.86" lengthAdjust="spacingAndGlyphs">
+    <text x="406.09" y="150.86" lengthAdjust="spacingAndGlyphs" textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica">
       6
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica" x="406.09" y="193.38" lengthAdjust="spacingAndGlyphs">
+    <text x="406.09" y="193.38" lengthAdjust="spacingAndGlyphs" textLength="4.89px" style="font-size: 8.8px; font-family: Helvetica">
       8
     </text>
   </g>
   <g clip-path="url(#clip_0_288_432_0)">
-    <text textLength="227.5px" style="font-size: 13.2px; font-family: Helvetica" x="33.26" y="14.95" lengthAdjust="spacingAndGlyphs">
+    <text x="33.26" y="14.95" lengthAdjust="spacingAndGlyphs" textLength="227.5px" style="font-size: 13.2px; font-family: Helvetica">
       Example - manual pattern specification
     </text>
   </g>

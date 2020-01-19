@@ -52,6 +52,34 @@ svg_open <- function(args, state) {
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   state$rdata$all_pattern_ids <- character(0)
 
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # pre-check that a pattern package
+  #  (a) exists
+  #  (b) provides all the required functions
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  pattern_pkg <- state$rdata$pattern_pkg
+  if (!is.null(pattern_pkg)) {
+    message("pattern_pkg: ", pattern_pkg)
+    if (!pattern_pkg %in% rownames(installed.packages())) {
+      warning("svg_open(): specified 'pattern_pkg' is not installed: ", pattern_pkg, call.=FALSE)
+      state$rdata$pattern_pkg <- NULL
+    } else {
+      func_names <- c('is_valid_pattern_encoding',
+                      'decode_pattern_from_rgba_vec',
+                      'create_pattern_id_from_rgba_vec')
+      funcs <- mget(func_names, envir = asNamespace(pattern_pkg), ifnotfound = NA)
+      if (any(is.na(funcs))) {
+        warning("svg_open(): specified 'pattern_pkg' (", pattern_pkg,
+                ") does not export all required functions: ", deparse(func_names),
+                call. = FALSE)
+        state$rdata$pattern_pkg <- NULL
+      }
+    }
+  }
+
+  state$rdata$use_pattern_pkg <- !is.null(state$rdata$pattern_pkg)
+
   state
 }
 
@@ -116,10 +144,7 @@ svg_path <- function(args, state) {
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Path Fill respects the pattern_pkg - R.E.S.P.E.C.T.
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  pattern_pkg      <- state$rdata$pattern_pkg
-  use_pattern_fill <- !is.null(pattern_pkg)
-
-  if (use_pattern_fill) {
+  if (state$rdata$use_pattern_pkg) {
     state <- write_pattern(state)
   }
 
@@ -137,7 +162,7 @@ svg_path <- function(args, state) {
     state$rdata$msvg$polygon(
       xs        = subargs$x,
       ys        = subargs$y,
-      style     = style_string(attr_names, state, use_pattern_fill),
+      style     = style_string(attr_names, state, state$rdata$use_pattern_pkg),
       clip_path = clip_path_string(state)
     )
   }
@@ -158,10 +183,7 @@ svg_polygon <- function(args, state) {
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Rectangle Fill respects the pattern_pkg - R.E.S.P.E.C.T.
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  pattern_pkg      <- state$rdata$pattern_pkg
-  use_pattern_fill <- !is.null(pattern_pkg)
-
-  if (use_pattern_fill) {
+  if (state$rdata$use_pattern_pkg) {
     state <- write_pattern(state)
   }
 
@@ -170,7 +192,7 @@ svg_polygon <- function(args, state) {
   state$rdata$msvg$polygon(
     xs        = round(args$x, 2),
     ys        = round(args$y, 2),
-    style     = style_string(attr_names, state, use_pattern_fill),
+    style     = style_string(attr_names, state, state$rdata$use_pattern_pkg),
     clip_path = clip_path_string(state)
   )
 
@@ -282,10 +304,7 @@ svg_rect <- function(args, state) {
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Rectangle Fill respects the pattern_pkg - R.E.S.P.E.C.T.
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  pattern_pkg      <- state$rdata$pattern_pkg
-  use_pattern_fill <- !is.null(pattern_pkg)
-
-  if (use_pattern_fill) {
+  if (state$rdata$use_pattern_pkg) {
     state <- write_pattern(state)
   }
 
@@ -305,7 +324,7 @@ svg_rect <- function(args, state) {
     y         = round(y, 2),
     width     = round(width , 2),
     height    = round(height, 2),
-    style     = style_string(attr_names, state, use_pattern_fill),
+    style     = style_string(attr_names, state, state$rdata$use_pattern_pkg),
     clip_path = clip_path_string(state)
   )
 
@@ -486,11 +505,14 @@ svg_callback <- function(device_call, args, state) {
 #' @param filename default: "svgout.svg"
 #' @param width,height size in inches
 #' @param ... arguments passed to \code{devout::rdevice}
+#'
+#' @importFrom utils installed.packages
 #' @import devout
 #'
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-svgout <- function(filename = "svgout.svg", width = 6, height = 4, ...) {
+svgout <- function(filename = "svgout.svg", width = 6, height = 4,
+                   ...) {
   requireNamespace('devout')
   devout::rdevice("svg_callback", filename = filename, width = width, height = height, ...)
 }
