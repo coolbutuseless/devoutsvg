@@ -88,7 +88,7 @@ invisible(dev.off())
 ## Filling with patterns
 
 In comparison to standard SVG output devices (such as `svg` and
-`svglist`) this device has options to modify and insert SVG into the
+`svglite`) this device has options to modify and insert SVG into the
 output.
 
 The `svgout` device can be instructed to use patterns instead of the
@@ -392,9 +392,9 @@ invisible(dev.off())
 
 </details>
 
-<img src="man/figures/example-usgs.svg"  width = "48%" alight = "left" />
-<img src="man/figures/example-retro.svg" width = "48%" alight = "left" />
-<img src="man/figures/example-pie.svg"   width = "48%" alight = "left" />
+<img src="man/figures/example-usgs.svg"  width = "45%" alight = "left" />
+<img src="man/figures/example-retro.svg" width = "45%" alight = "left" />
+<img src="man/figures/example-pie.svg"   width = "45%" alight = "left" />
 
 <div style="clear: both;" />
 
