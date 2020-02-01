@@ -4,14 +4,14 @@
 \alias{create_style_string}
 \title{Create stryle strings for the given attritute or set of attributes}
 \usage{
-create_style_string(attr_name, state, use_pattern_fill = FALSE)
+create_style_string(attr_name, state, geom)
 }
 \arguments{
 \item{attr_name}{attribute name of name for a set of attributes}
 
 \item{state}{list including 'gc' (graphics context)}
 
-\item{use_pattern_fill}{default FALSE}
+\item{geom}{which geometry has asked for a style}
 }
 \value{
 character vector of one or more "{attr_name}: {value}" strings

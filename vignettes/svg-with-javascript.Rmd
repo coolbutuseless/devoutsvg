@@ -1,0 +1,74 @@
+---
+title: "svg-with-javascript"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{svg-with-javascript}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(devoutsvg)
+library(ggplot2)
+```
+
+
+
+
+```{r fig.width = 8, fig.height = 4}
+example_plot <- ggplot(mtcars) + 
+  geom_density(aes(mpg, fill = as.factor(cyl))) + 
+  labs(title = "Example plot") + 
+  theme_bw() +    
+  scale_fill_manual(values = c('4' = '#df536b', '6' = '#61d04f', '8' = '#2297e6'))
+
+example_plot
+```
+
+```{r svgout_basic3}
+library(minisvg)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# D3.js code to add a rectangle
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+my_js_code <- "
+console.log('start {devoutsvg}');
+d3.select('svg')
+  .append('rect')
+  .attr('x', '25%')
+  .attr('y', '25%')
+  .attr('width', '50%')
+  .attr('height', '50%')
+  .attr('style', 'fill: blue; fill-opacity: 0.5;')
+console.log('end {devoutsvg}');
+"
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Set up the {devoutsvg} graphics device and output a ggplot
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+svgfile <- tempfile(fileext = '.svg')
+devoutsvg::svgout(
+  filename = svgfile, 
+  width    = 8, 
+  height   = 4,
+  js_url   = "https://d3js.org/d3.v5.min.js",
+  js_code  = my_js_code
+)
+
+example_plot
+
+invisible(dev.off())
+```
+
+
+```{r, echo=FALSE}
+htmltools::includeHTML(svgfile)
+```

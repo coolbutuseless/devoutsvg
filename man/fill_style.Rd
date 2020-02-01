@@ -4,12 +4,12 @@
 \alias{fill_style}
 \title{Construct a vector of styles related to 'fill'}
 \usage{
-fill_style(state, use_pattern_fill)
+fill_style(state, geom)
 }
 \arguments{
 \item{state}{list including 'gc' (graphics context)}
 
-\item{use_pattern_fill}{whether or not to use the pattern fill for this style}
+\item{geom}{which geometry has asked for a style}
 }
 \value{
 character vector of multiple "{attr_name}: {value}" strings for 'fill',

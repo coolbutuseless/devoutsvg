@@ -2,17 +2,44 @@
 % Please edit documentation in R/svgout.R
 \name{svgout}
 \alias{svgout}
-\title{SVG device written in R. JUst sets up \code{rdevice} to call \code{svg_callback()}}
+\title{SVG device written in R.}
 \usage{
-svgout(filename = "svgout.svg", width = 6, height = 4, ...)
+svgout(
+  filename = "svgout.svg",
+  width = 10,
+  height = 8,
+  js_url = NULL,
+  js_code = NULL,
+  css_url = NULL,
+  css_decl = NULL,
+  pattern_list = NULL,
+  ...
+)
 }
 \arguments{
 \item{filename}{default: "svgout.svg"}
 
-\item{width, height}{size in inches}
+\item{width, height}{size in inches. Default: 10x8}
+
+\item{js_url}{URL to external javascript to include in SVG output.
+Default: NULL (no external JS)}
+
+\item{js_code}{character string of javascript code to include in SVG output.
+Default: NULL (no javascript code to include)}
+
+\item{css_url}{URL to extenal CSS to include in SVG output.
+Default: NULL (no external CSS)}
+
+\item{css_decl}{character string of CSS declarations to include in SVG output.
+Default: NULL (no CSS declarations to include)}
+
+\item{pattern_list}{named list of patterns and filters to use as fills for the
+colour they represent.  See vignettes() for more information.
+Default: NULL (no replacement patterns or filters)}
 
 \item{...}{arguments passed to \code{devout::rdevice}}
 }
 \description{
-SVG device written in R. JUst sets up \code{rdevice} to call \code{svg_callback()}
+As with all devices based upon \code{devout}, this function realy just
+notifies \code{devout::rdevice()} to call \code{devoutsvg::svg_callback()}
 }

@@ -4,14 +4,14 @@
 \alias{style_string}
 \title{Create CSS styles for the given attributes}
 \usage{
-style_string(attr_names, state, use_pattern_fill = FALSE)
+style_string(attr_names, state, geom)
 }
 \arguments{
 \item{attr_names}{character vector of e.g 'fill', 'stroke', 'font'}
 
 \item{state}{list including 'gc' (graphics context)}
 
-\item{use_pattern_fill}{default: FALSE}
+\item{geom}{which geometry has asked for a style}
 }
 \value{
 style string ready for inclusion in an SVG tag e.g.

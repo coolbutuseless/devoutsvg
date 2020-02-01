@@ -23,20 +23,27 @@ svg_open <- function(args, state) {
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Add a default style
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  msvg$defs("<style type='text/css'><![CDATA[
+  msvg$add_css("
         line, polyline, polygon, path, rect, circle {
           fill: none;
           stroke: #000000;
           stroke-linecap: round;
           stroke-linejoin: round;
           stroke-miterlimit: 10.00;
-        }
-      ]]></style>")
+        }")
 
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # add a blank white rectangle as the background
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   msvg$rect(width='100%', height='100%', style='stroke: none; fill: #ffffff')
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Did the user specify an external CSS location?
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  msvg$add_css_url(state$rdata$css_url)
+  msvg$add_css    (state$rdata$css_decl)
+  msvg$add_js_url (state$rdata$js_url)
+  msvg$add_js_code(state$rdata$js_code)
 
   state$rdata$msvg <- msvg
 
@@ -48,37 +55,37 @@ svg_open <- function(args, state) {
   state$rdata$all_clip_ids    <- character(0)
 
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Keep track of which patterns have been added
+  # Keep track of which fills and filters have been added
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  state$rdata$all_pattern_ids <- character(0)
+  state$rdata$all_fill_ids    <- character(0)
+  state$rdata$all_filter_ids  <- character(0)
 
 
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # pre-check that a pattern package
-  #  (a) exists
-  #  (b) provides all the required functions
+  # `pattern_list` object must be an actual list.
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  pattern_pkg <- state$rdata$pattern_pkg
-  if (!is.null(pattern_pkg)) {
-    message("pattern_pkg: ", pattern_pkg)
-    if (!pattern_pkg %in% rownames(installed.packages())) {
-      warning("svg_open(): specified 'pattern_pkg' is not installed: ", pattern_pkg, call.=FALSE)
-      state$rdata$pattern_pkg <- NULL
-    } else {
-      func_names <- c('is_valid_pattern_encoding',
-                      'decode_pattern_from_rgba_vec',
-                      'create_pattern_id_from_rgba_vec')
-      funcs <- mget(func_names, envir = asNamespace(pattern_pkg), ifnotfound = NA)
-      if (any(is.na(funcs))) {
-        warning("svg_open(): specified 'pattern_pkg' (", pattern_pkg,
-                ") does not export all required functions: ", deparse(func_names),
-                call. = FALSE)
-        state$rdata$pattern_pkg <- NULL
-      }
-    }
+  if (is.null(state$rdata$pattern_list) || !is.list(state$rdata$pattern_list)) {
+    state$rdata$pattern_list <- list()
   }
 
-  state$rdata$use_pattern_pkg <- !is.null(state$rdata$pattern_pkg)
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Ensure all names of hex colours are uppercase to match svgout internals
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  names(state$rdata$pattern_list) <- toupper(names(state$rdata$pattern_list))
+
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Initialise some idx counters for element numbering
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  state$rdata$idx <- list(
+    polygon  = 0L,
+    polyline = 0L,
+    path     = 0L,
+    circle   = 0L,
+    rect     = 0L,
+    text     = 0L,
+    line     = 0L
+  )
+
 
   state
 }
@@ -103,14 +110,18 @@ svg_close <- function(args, state) {
 # Add a circle to the SVG
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 svg_circle <- function(args, state) {
-  attr_names <- c('fill', 'stroke')
+  geom                <- 'circle'
+  attr_names          <- c('fill', 'stroke', 'filter')
+
+  state$rdata$idx[[geom]] <- state$rdata$idx[[geom]] + 1L
 
   state$rdata$msvg$circle(
+    id        = sprintf("%s-%04i", geom, state$rdata$idx[[geom]]),
     cx        = round(args$x, 2),
     cy        = round(args$y, 2),
     r         = paste0(round(args$r, 2), 'pt'),
-    style     = style_string(attr_names, state),
-    clip_path = clip_path_string(state)
+    style     = style_string(attr_names = attr_names, state = state, geom = geom),
+    clip_path = clip_path_string(state = state)
   )
 
 
@@ -122,13 +133,17 @@ svg_circle <- function(args, state) {
 # Add a polyline to the SVG
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 svg_polyline <- function(args, state) {
-  attr_names <- c('stroke')
+  geom                <- 'polyline'
+  attr_names          <- c('stroke', 'filter')
+
+  state$rdata$idx[[geom]] <- state$rdata$idx[[geom]] + 1L
 
   state$rdata$msvg$polyline(
+    id        = sprintf("%s-%04i", geom, state$rdata$idx[[geom]]),
     xs        = round(args$x, 2),
     ys        = round(args$y, 2),
-    style     = style_string(attr_names, state),
-    clip_path = clip_path_string(state)
+    style     = style_string(attr_names = attr_names, state = state, geom = geom),
+    clip_path = clip_path_string(state = state)
   )
 
   state
@@ -137,19 +152,23 @@ svg_polyline <- function(args, state) {
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Convert a set of x,y coordinates to
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+coords_to_svg_path_string <- function(xs, ys) {
+  xs = round(xs, 4)
+  ys = round(ys, 4)
+  paste("M", paste(xs, ys, collapse = " L ", sep=" "), "Z")
+}
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Draw multiple paths
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 svg_path <- function(args, state) {
 
-  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Path Fill respects the pattern_pkg - R.E.S.P.E.C.T.
-  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  if (state$rdata$use_pattern_pkg) {
-    state <- write_pattern(state)
-  }
+  geom                <- 'path'
+  attr_names          <- c('stroke', 'fill', 'filter')
 
-
-  attr_names <- c('stroke', 'fill')
+  state$rdata$idx[[geom]] <- state$rdata$idx[[geom]] + 1L
 
   extents <- c(0, cumsum(args$nper))
 
@@ -159,15 +178,13 @@ svg_path <- function(args, state) {
     upper     <- extents[poly + 1L]
     subargs$x <- subargs$x[lower:upper]
     subargs$y <- subargs$y[lower:upper]
-    state$rdata$msvg$polygon(
-      xs        = subargs$x,
-      ys        = subargs$y,
-      style     = style_string(attr_names, state, state$rdata$use_pattern_pkg),
-      clip_path = clip_path_string(state)
+    state$rdata$msvg$path(
+      id        = sprintf("%s-%04i-%02i", geom, state$rdata$idx[[geom]], poly),
+      d         = coords_to_svg_path_string(subargs$x, subargs$y),
+      style     = style_string(attr_names = attr_names, state = state, geom = geom),
+      clip_path = clip_path_string(state = state)
     )
   }
-
-
 
   state
 }
@@ -180,19 +197,16 @@ svg_path <- function(args, state) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 svg_polygon <- function(args, state) {
 
-  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Rectangle Fill respects the pattern_pkg - R.E.S.P.E.C.T.
-  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  if (state$rdata$use_pattern_pkg) {
-    state <- write_pattern(state)
-  }
+  geom                <- 'polygon'
+  attr_names          <- c('fill', 'stroke', 'filter')
 
-  attr_names <- c('fill', 'stroke')
+  state$rdata$idx[[geom]] <- state$rdata$idx[[geom]] + 1L
 
   state$rdata$msvg$polygon(
-    xs        = round(args$x, 2),
-    ys        = round(args$y, 2),
-    style     = style_string(attr_names, state, state$rdata$use_pattern_pkg),
+    id        = sprintf("%s-%04i", geom, state$rdata$idx[[geom]]),
+    xs        = round(args$x, 4),
+    ys        = round(args$y, 4),
+    style     = style_string(attr_names = attr_names, state = state, geom = geom),
     clip_path = clip_path_string(state)
   )
 
@@ -204,15 +218,19 @@ svg_polygon <- function(args, state) {
 # Add a line to the SVG
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 svg_line <- function(args, state) {
-  attr_names <- c('fill', 'stroke')
+  geom                <- 'line'
+  attr_names          <- c('fill', 'stroke', 'filter')
+
+  state$rdata$idx[[geom]] <- state$rdata$idx[[geom]] + 1L
 
   state$rdata$msvg$line(
+    id        = sprintf("%s-%04i", geom, state$rdata$idx[[geom]]),
     x1        = round(args$x1, 2),
     y1        = round(args$y1, 2),
     x2        = round(args$x2, 2),
     y2        = round(args$y2, 2),
-    style     = style_string(attr_names, state),
-    clip_path = clip_path_string(state)
+    style     = style_string(attr_names = attr_names, state = state, geom = geom),
+    clip_path = clip_path_string(state = state)
   )
 
   state
@@ -253,6 +271,10 @@ get_font_info <- function(state) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 svg_text <- function(args, state) {
 
+  geom                <- 'text'
+  attr_names          <- 'font'
+
+  state$rdata$idx[[geom]] <- state$rdata$idx[[geom]] + 1L
 
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Calculate the display width of the string
@@ -281,12 +303,13 @@ svg_text <- function(args, state) {
   state$rdata$msvg$g(
     clip_path    = clip_path_string(state),
     minisvg::stag$text(
+      id           = sprintf("%s-%04i", geom, state$rdata$idx[[geom]]),
       trimws(args$str),
       x            = round(args$x, 2),
       y            = round(args$y, 2),
       textLength   = paste0(round(width, 2), "px"),
       lengthAdjust = "spacingAndGlyphs",
-      style        = style_string(attr_names = 'font', state),
+      style     = style_string(attr_names = attr_names, state = state, geom = geom),
       transform
     )
   )
@@ -301,12 +324,20 @@ svg_text <- function(args, state) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 svg_rect <- function(args, state) {
 
+  geom                <- 'rect'
+  attr_names          <- c('fill', 'stroke', 'filter')
+
+  state$rdata$idx[[geom]] <- state$rdata$idx[[geom]] + 1L
+
+
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Rectangle Fill respects the pattern_pkg - R.E.S.P.E.C.T.
+  # Has the user defined an internal element in the pattern_list?
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  if (state$rdata$use_pattern_pkg) {
-    state <- write_pattern(state)
-  }
+  gc          <- state$gc
+  fill        <- gc$fill
+  hexcolour   <- rgba_to_hex(fill)
+  inner       <- state$rdata$pattern_list[[hexcolour]][['inner']]
+
 
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Calculate rectangle extents
@@ -316,16 +347,16 @@ svg_rect <- function(args, state) {
   width  <- abs(args$x1 - args$x0)
   height <- abs(args$y1 - args$y0)
 
-
-  attr_names <- c('fill', 'stroke')
-
   state$rdata$msvg$rect(
+    id        = sprintf("%s-%04i", geom, state$rdata$idx[[geom]]),
     x         = round(x, 2),
     y         = round(y, 2),
     width     = round(width , 2),
     height    = round(height, 2),
-    style     = style_string(attr_names, state, state$rdata$use_pattern_pkg),
-    clip_path = clip_path_string(state)
+    style     = style_string(attr_names = attr_names, state = state, geom = geom),
+    clip_path = clip_path_string(state = state),
+    class     = state$rdata$pattern_list[[hexcolour]][['class']],
+    inner
   )
 
   state
@@ -500,10 +531,24 @@ svg_callback <- function(device_call, args, state) {
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#' SVG device written in R. JUst sets up \code{rdevice} to call \code{svg_callback()}
+#' SVG device written in R.
+#'
+#' As with all devices based upon \code{devout}, this function realy just
+#' notifies \code{devout::rdevice()} to call \code{devoutsvg::svg_callback()}
 #'
 #' @param filename default: "svgout.svg"
-#' @param width,height size in inches
+#' @param width,height size in inches. Default: 10x8
+#' @param js_url URL to external javascript to include in SVG output.
+#'        Default: NULL (no external JS)
+#' @param js_code character string of javascript code to include in SVG output.
+#'        Default: NULL (no javascript code to include)
+#' @param css_url URL to extenal CSS to include in SVG output.
+#'        Default: NULL (no external CSS)
+#' @param css_decl character string of CSS declarations to include in SVG output.
+#'        Default: NULL (no CSS declarations to include)
+#' @param pattern_list named list of patterns and filters to use as fills for the
+#'        colour they represent.  See vignettes() for more information.
+#'        Default: NULL (no replacement patterns or filters)
 #' @param ... arguments passed to \code{devout::rdevice}
 #'
 #' @importFrom utils installed.packages
@@ -511,9 +556,20 @@ svg_callback <- function(device_call, args, state) {
 #'
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-svgout <- function(filename = "svgout.svg", width = 6, height = 4,
-                   ...) {
+svgout <- function(filename = "svgout.svg", width = 10, height = 8,
+                   js_url = NULL, js_code = NULL,
+                   css_url = NULL, css_decl = NULL,
+                   pattern_list = NULL, ...) {
   requireNamespace('devout')
-  devout::rdevice("svg_callback", filename = filename, width = width, height = height, ...)
+  devout::rdevice(
+    "svg_callback",
+    filename     = filename,
+    width        = width,
+    height       = height,
+    js_url       = js_url,
+    js_code      = js_code,
+    css_url      = css_url,
+    css_decl     = css_decl,
+    pattern_list = pattern_list, ...)
 }
 

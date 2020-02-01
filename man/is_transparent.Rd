@@ -4,10 +4,10 @@
 \alias{is_transparent}
 \title{Is the colour transparent?}
 \usage{
-is_transparent(vec)
+is_transparent(rgba_vec)
 }
 \arguments{
-\item{vec}{4 element rgba with integer values [0, 255]}
+\item{rgba_vec}{4 element rgba with integer values [0, 255]}
 }
 \value{
 TRUE if alpha == 0

@@ -1,0 +1,74 @@
+---
+title: "svg-with-css"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{svg-with-css}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ggplot2)
+library(devoutsvg)
+```
+
+
+```{r fig.width = 8, fig.height = 4}
+example_plot <- ggplot(mtcars) + 
+  geom_density(aes(mpg, fill = as.factor(cyl))) + 
+  labs(title = "Example plot") + 
+  theme_bw() +    
+  scale_fill_manual(values = c('4' = '#df536b', '6' = '#61d04f', '8' = '#2297e6'))
+
+example_plot
+```
+
+
+```{r}
+my_css_decl <- "  
+@keyframes pulse {
+  from {transform: scale3d(1, 1, 1);}
+  50%  {transform: scale3d(1.15, 1.15, 1.15);}
+  to   {transform: scale3d(1, 1, 1);}
+}
+
+#polygon-0003 {
+  animation-name: pulse;
+  animation-duration: 4s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+rect:hover {
+  fill: green !important;
+}
+"
+
+svgfile <- tempfile(fileext = '.svg')
+svgout(filename = svgfile, width = 8, height = 4,
+       css_decl = my_css_decl)
+
+  example_plot + 
+    labs(title = "Example - CSS")
+  
+invisible(dev.off())
+```
+
+
+
+```{r, echo=FALSE}
+htmltools::includeHTML(svgfile)
+```
+
+
+
+
+
+

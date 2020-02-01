@@ -66,29 +66,29 @@ Create, view, debug and iterate to find a gradient fill of your liking.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Create SVG gradient pattern definition
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-grad <- svgpatternsimple::create_gradient_pattern(
+gradient_pattern <- svgpatternsimple::create_pattern_gradient(
   id      = "p1",      # HTML/SVG id to assign to this pattern
   angle   = 90,        # Direction of the gradient
   colour1 = "White",   # Starting colour
   colour2 = "#0570b0"  # Final colour
 )
 
-# Contents of 'grad' pattern
+# Contents of 'gradient_pattern'
 #> <linearGradient id="p1" x1="0%" y1="100%" x2="0%" y2="0%">
 #>   <stop style="stop-color:White;stop-opacity:1" offset="0%" />
 #>   <stop style="stop-color:#0570b0;stop-opacity:1" offset="100%" />
 #> </linearGradient>
 
 # Visualise in viewer in Rstudio
-# grad$show()
+# gradient_pattern$show()
 ```
 
 
 ```{r echo = FALSE, eval = FALSE}
 if (interactive()) {
-  grad$show()
+  gradient_pattern$show()
 } 
-grad$save_full_svg("svg/gradient-example.svg", height=100, include_declaration = FALSE)
+gradient_pattern$save_full_svg("svg/gradient-example.svg", height=100, include_declaration = FALSE)
 ```
 
 <img src="images/blue.png" />
@@ -96,31 +96,19 @@ grad$save_full_svg("svg/gradient-example.svg", height=100, include_declaration =
 
 
 
-```{r}
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Encode the parameters of tis pattern into a RGB hex triplet.
-# This colour will be unpacked during the plotting process and turned back 
-# in to a gradient
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-gradRGB <- svgpatternsimple::encode_pattern_params_as_hex_colour(
-  pattern_name = "gradient",
-  angle        = 90, 
-  colour1      = "White", 
-  colour2      = "#0570b0"
-)   
-
-gradRGB
-```
-
-
 ```{r eval=TRUE}
+my_pattern_list <- list(
+  `#000001` = list(fill = gradient_pattern)
+)
+
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Render the graph to the 'svgout' device and nominate any patterns to be 
 # rendered by the 'svgpatternsimple' package
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-svgout(filename = "svg/test-gradient.svg", pattern_pkg="svgpatternsimple")
+svgout(filename = "svg/test-gradient.svg", pattern_list = my_pattern_list)
   ggplot(iris, aes(x=Sepal.Width, y=Species)) +
-  geom_density_ridges(alpha=0.33, scale=2, fill=gradRGB, colour=alpha(0.1)) +
+  geom_density_ridges(alpha=0.33, scale=2, fill='#000001', colour=alpha(0.1)) +
   theme_classic()
 invisible(dev.off())    
 ```
@@ -170,9 +158,9 @@ drugs <- drugs %>%
 # Render the graph to the 'svgout' device and nominate any fill colours to be 
 # rendered by the 'svgpatternsimple' package
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-svgout(filename = "svg/DrugDeaths.svg", pattern_pkg="svgpatternsimple", width=4, height=6)
+svgout(filename = "svg/DrugDeaths.svg", pattern_list = my_pattern_list, width=4, height=6)
 ggplot(drugs, aes(Age, Year, height=Deaths, group=Year)) +
-  geom_density_ridges(stat='identity', scale = 3, colour=NA, fill=gradRGB) + 
+  geom_density_ridges(stat='identity', scale = 3, colour=NA, fill='#000001') + 
   scale_y_reverse(position = 'right', breaks = sort(unique(drugs$Year))) +
   scale_x_continuous(breaks = seq(10, 90, 10)) +
   theme_classic() +

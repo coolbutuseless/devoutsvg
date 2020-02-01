@@ -4,10 +4,12 @@
 \alias{stroke_style}
 \title{Construct a vector of styles related to 'stroke'}
 \usage{
-stroke_style(state)
+stroke_style(state, geom)
 }
 \arguments{
 \item{state}{list including 'gc' (graphics context)}
+
+\item{geom}{which geometry has asked for a style}
 }
 \value{
 character vector of multiple "{attr_name}: {value}" strings for

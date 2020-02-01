@@ -1,29 +1,34 @@
 Package: devoutsvg
 Type: Package
 Title: SVG Graphics Device with Pattern Fill Support
-Version: 0.1.1
+Version: 0.2.0
 Author: mikefc@coolbutuseless.com
 Maintainer: mikefc <mikefc@coolbutuseless.com>
 Description: SVG graphics device written in R. Supports regions filled with patterns.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/coolbutuseless/devoutsvg,https://coolbutuseless.github.io/package/devoutsvg
+URL: https://coolbutuseless.github.io/package/devoutsvg,https://github.com/coolbutuseless/devoutsvg
 Depends:
     R (>= 3.5.0),
     devout
 Imports:
     gdtools,
     glue,
-    minisvg
+    minisvg (>= 0.1.6)
 Suggests:
-    svgpatternsimple,
-    svgpatternusgs,
     knitr,
     rmarkdown,
     dplyr,
     tidyr,
     ggplot2,
-    ggridges
+    ggridges,
+    svgpatternsimple,
+    htmltools,
+    d3r,
+    multiscales,
+    class,
+    scales,
+    KernSmooth
 RoxygenNote: 7.0.2
 VignetteBuilder: knitr

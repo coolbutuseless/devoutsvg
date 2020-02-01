@@ -6,12 +6,47 @@
 <!-- badges: start -->
 
 ![](https://img.shields.io/badge/cool-useless-green.svg)
-![](http://img.shields.io/badge/dev-out-blue.svg) <!-- badges: end -->
+![](http://img.shields.io/badge/dev-out-blue.svg)
+![](http://img.shields.io/badge/lifecycle-very_experimental-blue.svg)
+<!-- badges: end -->
 
 `devoutsvg` provides a bespoke SVG graphics device written in plain R.
 
-The key feature of this SVG graphics device is that it allowd for the
-use of patterns for filled regions in plots\!
+Because github sanitises SVG to remove some elements of style, scripting
+and animation, please see the [devoutsvg pkgdown
+website](https://coolbutuseless.github.io/package/devoutsvg/index.html)
+to view the animations.
+
+#### Key Features
+
+  - Behaves like a normal graphic output device
+  - Written in plain R (making use of
+    [devout](https://github.com/coolbutuseless/devout) for the interface
+    to C)
+  - Can use pattern fills for area - either using raw SVG, `minisvg`
+    documents or packages such as:
+      - [`svgpatternsimple`](https://github.com/coolbutuseless/svgpatternsimple)
+        for simple repeating stripes and dots etc
+      - [`svgpatternusgs`](https://github.com/coolbutuseless/svgpatternusgs)
+        for geological patterns from the [USGS](//usgs.gov)
+  - Can include Javascript to further customise the output.
+
+#### What’s New
+
+  - Complete refactor of how pattern fills are specified. This used to
+    be via packages which provided patterns, but is now done directly in
+    a `pattern_list` object supplied by the user when the `svgout`
+    device is called.
+
+#### Future
+
+  - Work out a convenient way to specify CSS, Javascript and SVG on
+    individual elements within the plot.
+
+#### Warning
+
+This package is still **very** experimental. The means of specifying
+CSS, javascript, patterns and filters will evolve.
 
 ## Installation
 
@@ -20,226 +55,273 @@ You can install from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("coolbutuseless/lofi")      # Colour encoding
 devtools::install_github("coolbutuseless/minisvg")   # SVG creation
 devtools::install_github("coolbutuseless/devout")    # Device interface
 devtools::install_github("coolbutuseless/devoutsvg") # This package
 ```
 
-## Basic usage of the `svgout` device
+## Using the `svgout` device
 
 Use this device in the same way you would use `pdf()`, `png()` any of
 the other graphics output devices in R.
 
-This results is thankfully uninteresting\! That is, if the `svgout`
-device works properly then the output should like the standard ggplot
-output you’ve seen hundreds of times before.
-
 ``` r
-devoutsvg::svgout(filename = "man/figures/example-basic.svg")
-ggplot(mtcars) + 
-  geom_point(aes(mpg, wt, colour = as.factor(cyl))) + 
-  labs(title = basename("Example - Basic")) 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Create a very boring plot
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+example_plot <- ggplot(mtcars) + 
+  geom_density(aes(mpg, fill = as.factor(cyl))) +
+  labs(title = "Example `devoutsvg::svgout()` device output") + 
+  theme_bw() +    
+  scale_fill_manual(values = c('4' = '#df536b', '6' = '#61d04f', '8' = '#2297e6'))
+  
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Output the plot to the `svgout` device
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+devoutsvg::svgout(filename = "man/figures/svgout-example.svg", width = 8, height = 4)
+  example_plot
 invisible(dev.off())
 ```
 
-<img src="man/figures/example-basic.svg" />
+<img src="man/figures/svgout-example.svg" />
 
 ## Filling with patterns
 
-Because we now have control over the graphics device at quite a low
-level, we get to misbehave\!
+In comparison to standard SVG output devices (such as `svg` and
+`svglist`) this device has options to modify and insert SVG into the
+output.
 
 The `svgout` device can be instructed to use patterns instead of the
 actual RGB colour - this is achieved by
 
-  - instructing the device to use a particular pattern package
-    (`pattern_pkg`), and
-  - encoding particular patterns from that package as their RGB
-    representations using
-    `{pattern_pkg}::encode_pattern_params_as_hex_colour()`
-
-When `svgout` is asked to render a colour, it instead asks `pattern_pkg`
-to `**decode**hex_colour_as_pattern_params` and returns the desired SVG
-pattern snippet.
-
-Some examples of pattern packages are:
-
-  - [`svgpatternsimple`](https://github.com/coolbutuseless/svgpatternsimple)
-  - [`svgpatternusgs`](https://github.com/coolbutuseless/svgpatternusgs)
+1.  Defining a pattern through either:
+      - Providing SVG in a text string
+      - A `minisvg` object
+2.  Creating a named list associating a hex colour with a pattern
+3.  Passing this named list to the `svgout` device.
 
 <!-- end list -->
 
 ``` r
-library(svgpatternsimple)
-#> 
-#> Attaching package: 'svgpatternsimple'
-#> The following objects are masked from 'package:svgpatternusgs':
-#> 
-#>     create_pattern_id_from_rgba_vec, decode_pattern_from_rgba_vec,
-#>     encode_pattern_params_as_hex_colour, is_valid_pattern_encoding
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Encode the parameters for 3 different patterns into 3 different colours
+# 1. Define a pattern
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-gear4_colour <- svgpatternsimple::encode_pattern_params_as_hex_colour(
-  pattern_name = 'null', 
-  colour       = '#123456'
-)
-
-gear6_colour <- svgpatternsimple::encode_pattern_params_as_hex_colour(
-  pattern_name = 'stipple', 
-  colour       = '#ff4455', 
+pattern_gear4 <- svgpatternsimple::create_pattern_stipple(
+  id           = 'stipple',
+  colour       = '#61d04f', 
   spacing      = 10
 )
 
-gear8_colour <- svgpatternsimple::encode_pattern_params_as_hex_colour(
-  pattern_name  = 'hex', 
+pattern_gear6 <- svgpatternsimple::create_pattern_hex(
+  id            = 'hex',
   angle         = 0, 
   spacing       = 20, 
   fill_fraction = 0.1,
-  colour        = '#125634'
+  colour        = '#2297e6'
+)
+```
+
+<img src = "man/figures/patterns.svg" />
+
+``` r
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 2. Create a named list associating a hex colour with a pattern to fill with
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+my_pattern_list <- list(
+  '#61d04f' = list(fill = pattern_gear4),
+  '#2297e6' = list(fill = pattern_gear6)
 )
 
-c(gear4_colour, gear6_colour, gear8_colour)
-#> [1] "#024D2BFF" "#9D213FFF" "#A09708FF"
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 3. Pass this named `pattern_list` to the `svgout` device
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+svgout(filename = "man/figures/example-manual.svg", width = 8, height = 4,
+       pattern_list = my_pattern_list)
 
-
-svgout(filename = "man/figures/example-manual.svg", pattern_pkg = 'svgpatternsimple')
-#> pattern_pkg: svgpatternsimple
-ggplot(mtcars) + 
-  geom_bar(aes(as.factor(cyl), fill = as.factor(cyl)), colour = 'black') + 
-  labs(title = basename("Example - manual pattern specification")) + 
-  theme_bw() +
-  theme(legend.key.size = unit(1.5, "cm")) + 
-  scale_fill_manual(
-    values = c(
-      '4' = gear4_colour,
-      '6' = gear6_colour,
-      '8' = gear8_colour
-    )
-  )
+  example_plot + 
+    labs(title = "Example - manual pattern specification")
+  
 invisible(dev.off())
 ```
 
 <img src = "man/figures/example-manual.svg" />
 
-## Using `scale_fill_pattern_simple()`
+## Applying an SVG filter to a object
 
-Rather than specifying individual patterns to map to colours, you can
-use a `scale_fill`. Since RGB colours don’t intuitively map to patterns,
-if you let ggplot choose the patterns using the default
-`scale_fill_discrete()` you will get a pretty ugly combination of
-patterns in your plot.
+The `svgout` device can be instructed to apply an SVG filter to a
+region. Filters can be applied in addition to patterns.
 
-`scale_fill_pattern_simple()` allows the user to specify the envelope of
-desired outputs and ggplot will map values-to-patterns automatically
-within this envelope.
+1.  Defining a pattern/filter through either:
+      - Providing SVG in a text string
+      - A `minisvg` object
+2.  Creating a named list associating a hex colour with a pattern
+3.  Passing this named list to the `svgout` device.
 
-By default this will give an OK spread of pattern styles, but it
-probably won’t be great.  
-See the next section for how to specify the desired envelope of possible
-patterns.
+<!-- end list -->
 
 ``` r
-svgout(pattern_pkg = 'svgpatternsimple', filename = "man/figures/example-scale-fill-2.svg")
-#> pattern_pkg: svgpatternsimple
-ggplot(mtcars) + 
-  geom_bar(aes(as.factor(cyl), fill = as.factor(cyl)), colour = 'black') + 
-  labs(title = "scale_fill_pattern_simple() - defaults") + 
-  theme_bw() +
-  theme(legend.key.size = unit(1.5, "cm")) +
-  svgpatternsimple::scale_fill_pattern_simple()
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 1. Define a pattern
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+pattern_gear4 <- svgpatternsimple::create_pattern_gradient(
+  id           = 'fire_gradient',
+  colour1      = 'red', 
+  colour2      = 'gold',
+  angle        = 90
+)
+
+pattern_gear6 <- svgpatternsimple::create_pattern_hex(
+  id            = 'hex',
+  angle         = 0, 
+  spacing       = 20, 
+  fill_fraction = 0.1,
+  colour        = '#2297e6'
+)
+
+fire_filter <- svgfilter::create_filter_turbulent_displacement(
+  id = "fire1"
+)
+```
+
+``` r
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 2. Create a named list associating a hex colour with a pattern to fill with
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+my_pattern_list <- list(
+  '#61d04f' = list(fill = pattern_gear4, filter = fire_filter),
+  '#2297e6' = list(fill = pattern_gear6)
+)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 3. Pass this named `pattern_list` to the `svgout` device
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+svgout(filename = "man/figures/example-filter.svg", width = 8, height = 4,
+       pattern_list = my_pattern_list)
+
+  example_plot + 
+    labs(title = "Example - patterns + filters")
+  
 invisible(dev.off())
 ```
 
-<img src = "man/figures/example-scale-fill-2.svg" />
+<img src = "man/figures/example-filter.svg" />
 
-## Using `scale_fill_pattern_simple()` with a defined pattern set.
+## Including javascript to customise a plot
 
-By default `scale_fill_pattern_simple()` will give an OK spread of
-pattern styles, but it probably won’t be great.
+The following example includes the [D3](https://d3js.org/) javascript
+library and includes javascript code to manipulate the plot. You don’t
+have to include any javascript libraries if you don’t want - and you can
+just write raw javascript to manipulate the DOM.
 
-The call to `scale_fill_pattern_simple()` can be customised to limit the
-possible choices of pattern which will appear in the plot. The default
-options are as follows:
-
-  - `pattern_name = c('stripe', 'dot', 'hatch', 'check', 'stipple',
-    'hex')`
-  - `angle = c(22., 45, 67.5)`
-  - `spacing = seq(5, 50, length.out = 7)`
-  - `fill_fraction = seq(0.1, 0.9, length.out = 3)`
-
-In this following example, the choice of possible patterns is limited to
-‘stripe’ and ‘hatch’, all at 45 degrees, with a range of `fill_fraction`
-and `spacing`
+Note: because github removes js/css from SVG objects a screenshot of the
+resulting SVG is included.
 
 ``` r
-svgout(pattern_pkg = 'svgpatternsimple', filename = "man/figures/example-patternsimple-scale-fill.svg",
-       width = 8, height = 6)
-#> pattern_pkg: svgpatternsimple
-ggplot(mtcars) + 
-  geom_density(aes(mpg, fill = interaction(cyl, am)), alpha = 1) +
-  theme_bw() +
-  theme(legend.key.size = unit(1.2, "cm")) +
-  labs(title = "scale_fill_pattern_simple() - custom") +
-  svgpatternsimple::scale_fill_pattern_simple(
-    pattern_name  = c('stripe', 'hatch'),
-    fill_fraction = seq(0.1, 0.4, length.out = 5), 
-    angle         = c(45), 
-    spacing       = c(10, 20)) 
+my_js_code <- "  
+d3.select('#polygon-0001').style('fill', null);
+d3.select('#polygon-0003').style('stroke-width', 10);
+"
+
+svgout(filename = "man/figures/example-javascript.svg", width = 8, height = 4,
+       js_url = "https://d3js.org/d3.v5.min.js", js_code = my_js_code)
+
+  example_plot + 
+    labs(title = "Example - javascript (D3)")
+  
 invisible(dev.off())
 ```
 
-<img src="man/figures/example-patternsimple-scale-fill.svg" />
+<img src = "man/figures/example-javascript.png" />
 
-## Pattern fills with base plots
+## Including CSS to customise a plot
+
+The following example includes the
+[animate.css](https://daneden.github.io/animate.css/) CSS library and
+includes CSS declarations to apply these styles to some objects.
+
+You don’t have to include any CSS libraries if you don’t want - and you
+can just write raw CSS to style the DOM.
+
+Note: because github removes js/css from SVG objects a screenshot of the
+resulting SVG is included.
 
 ``` r
+my_css_decl <- "  
+@keyframes pulse {
+  from {transform: scale3d(1, 1, 1);}
+  50%  {transform: scale3d(1.15, 1.15, 1.15);}
+  to   {transform: scale3d(1, 1, 1);}
+}
 
-colours <- c(
-  svgpatternsimple::encode_pattern_params_as_hex_colour(
-    pattern_name = 'null', 
-    colour       = '#123456'
-  ),
+#polygon-0003 {
+  animation-name: pulse;
+  animation-duration: 4s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+rect:hover {
+  fill: green !important;
+}
+"
+
+svgout(filename = "man/figures/example-css.svg", width = 8, height = 4,
+       css_decl = my_css_decl)
+
+  example_plot + 
+    labs(title = "Example - CSS")
   
-  svgpatternsimple::encode_pattern_params_as_hex_colour(
-    pattern_name = 'stipple', 
-    colour       = '#ff4455', 
-    spacing      = 10
-  ),
+invisible(dev.off())
+```
+
+<img src = "man/figures/example-css.gif" />
+
+## More examples of patterns and filters
+
+<details>
+
+<summary style='color: #4169E1;'>Show R code for the base `pie` graph
+(click to open/close) </summary>
+
+``` r
+my_pattern_list <- list(
+  `#000001` = list(
+    fill = svgpatternsimple::create_pattern_stipple(
+      id      = 'stipple',
+      colour  = '#ff4455', 
+      spacing = 10
+    )),
   
-  svgpatternsimple::encode_pattern_params_as_hex_colour(
-    pattern_name = 'hex', 
-    colour       = '#ddff55', 
-    spacing      = 8
-  ),
+  `#000002` = list(
+    fill = svgpatternsimple::create_pattern_hex(
+      id      = 'hex',
+      colour  = '#ddff55', 
+      spacing = 8
+    )),
   
-  svgpatternsimple::encode_pattern_params_as_hex_colour(
-    pattern_name = 'check', 
-    colour       = '#ee55ff', 
-    spacing      = 10
+  `#000003` = list(
+    fill = svgpatternsimple::create_pattern_check(
+      id      = 'check',
+      colour  = '#ee55ff', 
+      spacing = 10
+    )
   )
 )
 
+colours <- c('tomato', '#000001', '#000002', '#000003')
 
-devoutsvg::svgout(pattern_pkg = 'svgpatternsimple', filename = "man/figures/example-pie.svg")
-#> pattern_pkg: svgpatternsimple
-pie(c(cool = 4, but = 2, use = 1, less = 8), col = colours)
+devoutsvg::svgout(filename = "man/figures/example-pie.svg", width = 4, height = 4,
+                  pattern_list = my_pattern_list)
+    pie(c(cool = 4, but = 2, use = 1, less = 8), col = colours)
 invisible(dev.off())
 ```
 
-<img src="man/figures/example-pie.svg" />
+</details>
 
-## U.S. Geological Survey patterns on `geom_sf()` plots
+<details>
 
-The following plot uses the SVG pattern library made available in
-[`svgpatternusgs`](https://github.com/coolbutuseless/svgpatternusgs).
-
-The 6 areas are manually assigned a colour which corresponds to a set of
-pattern params. The parameters are encoded to a colour by the
-`encode_pattern_params_as_hex_colour()` function in the `svgpatternusgs`
-package.
+<summary style='color: #4169E1;'>Show R code for USGS plot (click to
+open/close) </summary>
 
 ``` r
 library(sf)
@@ -255,46 +337,47 @@ nc <- nc[nc$NAME %in% c('Surry', 'Stokes', 'Rockingham', 'Yadkin', 'Forsyth', 'G
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Encode specific USGS pattern numbers into colours
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-colours <- c(
-  Surry      = svgpatternusgs::encode_pattern_params_as_hex_colour(usgs_code = 601, spacing = 100, fill='#77ff99'),
-  Stokes     = svgpatternusgs::encode_pattern_params_as_hex_colour(usgs_code = 606, spacing = 100),
-  Rockingham = svgpatternusgs::encode_pattern_params_as_hex_colour(usgs_code = 629, spacing = 100),
-  Yadkin     = svgpatternusgs::encode_pattern_params_as_hex_colour(usgs_code = 632, spacing = 100),
-  Forsyth    = svgpatternusgs::encode_pattern_params_as_hex_colour(usgs_code = 706, spacing = 100),
-  Guilford   = svgpatternusgs::encode_pattern_params_as_hex_colour(usgs_code = 717, spacing = 100)
+my_pattern_list <- list(
+  `#000001` = list(fill = svgpatternusgs::create_usgs_pattern(usgs_code = 601, spacing = 100, fill='#77ff99')),
+  `#000002` = list(fill = svgpatternusgs::create_usgs_pattern(usgs_code = 606, spacing = 100)),
+  `#000003` = list(fill = svgpatternusgs::create_usgs_pattern(usgs_code = 629, spacing = 100)),
+  `#000004` = list(fill = svgpatternusgs::create_usgs_pattern(usgs_code = 632, spacing = 100)),
+  `#000005` = list(fill = svgpatternusgs::create_usgs_pattern(usgs_code = 706, spacing = 100)),
+  `#000006` = list(fill = svgpatternusgs::create_usgs_pattern(usgs_code = 717, spacing = 100))
 )
 
-devoutsvg::svgout(filename = "man/figures/example-usgs.svg", pattern_pkg = 'svgpatternusgs')
-#> pattern_pkg: svgpatternusgs
+devoutsvg::svgout(filename = "man/figures/example-usgs.svg", width = 6, height = 4,
+                  pattern_list = my_pattern_list)
 ggplot(nc) +
   geom_sf(aes(fill = NAME)) +
-  scale_fill_manual(values = colours) + 
+  scale_fill_manual(values = names(my_pattern_list)) + 
   theme(legend.key.size = unit(0.6, "cm")) + 
   labs(title = "U.S. Geological Survey Patterns with `geom_sf()`") +
   theme_bw()
 invisible(dev.off())
 ```
 
-<img src="man/figures/example-usgs.svg" />
+</details>
 
-## Retro plotting
+<details>
+
+<summary style='color: #4169E1;'>Show R code for retro plot (click to
+open/close) </summary>
 
 ``` r
-f <- svgpatternsimple::encode_pattern_params_as_hex_colour
-
-colours <- c(
-  `2seater`  = f(pattern_name = 'stripe', spacing =  5, fill_fraction = 0.7, angle = 0),
-  compact    = f(pattern_name = 'stripe', spacing =  5, fill_fraction = 0.7, angle = 45),
-  midsize    = f(pattern_name = 'stripe', spacing =  5, fill_fraction = 0.7, angle = 135),
-  minivan    = f(pattern_name = 'hatch' , spacing =  7, fill_fraction = 0.2, angle = 0),
-  pickup     = f(pattern_name = 'hatch' , spacing =  7, fill_fraction = 0.2, angle = 45),
-  subcompact = f(pattern_name = 'dot'   , spacing =  4, fill_fraction = 0.8, angle = 0),
-  suv        = f(pattern_name = 'dot'   , spacing =  8, fill_fraction = 0.7)
+my_pattern_list <- list(
+  `#000001` = list(fill = svgpatternsimple::create_pattern_stripe(id = 'pattern1', spacing =  5, fill_fraction = 0.7, angle =   0)),
+  `#000002` = list(fill = svgpatternsimple::create_pattern_stripe(id = 'pattern2', spacing =  5, fill_fraction = 0.7, angle =  45)),
+  `#000003` = list(fill = svgpatternsimple::create_pattern_stripe(id = 'pattern3', spacing =  5, fill_fraction = 0.7, angle = 135)),
+  `#000004` = list(fill = svgpatternsimple::create_pattern_hatch (id = 'pattern4', spacing =  7, fill_fraction = 0.2, angle =   0)),
+  `#000005` = list(fill = svgpatternsimple::create_pattern_hatch (id = 'pattern5', spacing =  7, fill_fraction = 0.2, angle =  45)),
+  `#000006` = list(fill = svgpatternsimple::create_pattern_dot   (id = 'pattern6', spacing =  4, fill_fraction = 0.8, angle =   0)),
+  `#000007` = list(fill = svgpatternsimple::create_pattern_dot   (id = 'pattern7', spacing =  8, fill_fraction = 0.7))
 )
 
 
-devoutsvg::svgout(filename = "man/figures/example-retro.svg", pattern_pkg = 'svgpatternsimple')
-#> pattern_pkg: svgpatternsimple
+devoutsvg::svgout(filename = "man/figures/example-retro.svg", width = 6, height = 4, 
+                  pattern_list = my_pattern_list)
 ggplot(mpg) +
   geom_bar(aes(class, fill=class), colour='black') + 
   theme_bw() + 
@@ -303,13 +386,24 @@ ggplot(mpg) +
     text       = element_text(size=12,  family="Courier New", face = 'bold'),
     legend.position = 'none'
   ) + 
-  scale_fill_manual(values = colours)
+  scale_fill_manual(values = names(my_pattern_list))
 invisible(dev.off())
 ```
 
-<img src="man/figures/example-retro.svg" />
+</details>
+
+<img src="man/figures/example-usgs.svg"  width = "48%" alight = "left" />
+<img src="man/figures/example-retro.svg" width = "48%" alight = "left" />
+<img src="man/figures/example-pie.svg"   width = "48%" alight = "left" />
+
+<div style="clear: both;" />
+
+
+
 
 ## Real-world examples
+
+#### Left - Death trends
 
 The following was created by
 [VictimOfMaths](https://twitter.com/VictimOfmaths) to compare deaths
@@ -321,13 +415,17 @@ is included as a vignette (`vignette('svg-with-gradient-fill', package =
 'devoutsvg')`) - see also the [online devoutsvg
 documentation](https://coolbutuseless.github.io/package/devoutsvg/articles/svg-with-gradient-fill.html)
 
-<img src="man/figures/gradient-examples/VictimOfMaths.png" width="45%">
+#### Right - Fire Season Workloads
 
 A similar approach was used by
 [MilesMcbain](https://twitter.com/MilesMcBain) to create this plot of
 fire season workloads:
 
-<img src="man/figures/gradient-examples/MilesMcbain.jpg" width="75%">
+<img src="man/figures/gradient-examples/VictimOfMaths.png" width="40%" align='left' />
+<img src="man/figures/gradient-examples/MilesMcbain.jpg"   width="58%" align='left' />
+
+<div style="clear: both;" />
+
 
 ## Convert SVG to PDF
 
@@ -345,3 +443,106 @@ If you need a PDF version of an SVG file, there are a number of options.
         "input.svg"`
 6.  Web-based. There are lots of these e.g.
       - <https://cloudconvert.com/svg-to-pdf>
+
+## Creating the logo for this package
+
+Note: Because github sanitizes SVG files it makes the SVG produced in
+this section unviewable. Instead, the SVG was first saved, and then
+rendered to PNG
+
+<details>
+
+<summary style='color: #4169E1;'>Show R code for logo (click to
+open/close) </summary>
+
+``` r
+library(minisvg)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Building an SVG logo with an animated stripe
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+logo <- svg_doc(width = 200, height = 200)$
+  update(width=NULL, height=NULL)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Background White Rect
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+logo$rect(x=0, y=0, width="100%", height="100%", fill='white')
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Create a hexagon filled, and add it to the document
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+len     <- 95
+angles  <- (seq(0, 360, 60) + 90) * pi/180
+xs      <- round(len * cos(angles) + 100, 2)
+ys      <- round(len * sin(angles) + 100, 2)
+hex     <- stag$polygon(id = 'hex', xs = xs, ys = ys)
+hex$update(stroke = '#223344', fill_opacity=0, stroke_width = 3)
+logo$append(hex)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Text label
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text1 <- stag$text(
+  "/dev/out/",
+  class = "mainfont",
+  x = 22, y = 90
+)
+
+text2 <- stag$text(
+  "svg",
+  class = "mainfont",
+  x = 72, y = 135
+)
+
+logo$append(text1)
+logo$append(text2)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Load CSS for google font and specify styling for 'mainfont'
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+logo$add_css_url("https://fonts.googleapis.com/css?family=Abril%20Fatface")
+logo$add_css("
+.mainfont {
+  font-size: 38px;
+  font-family: 'Abril Fatface', sans-serif;
+  fill: #223344;
+}
+")
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# output
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# logo$show()
+logo$save("man/figures/logo.svg")
+```
+
+</details>
+
+<pre><details><summary style='color: #4169E1;'> Show/hide SVG text </summary>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+&lt;style type='text/css'&gt;
+&lt;![CDATA[
+@import url(https://fonts.googleapis.com/css?family=Abril%20Fatface);
+
+.mainfont {
+  font-size: 38px;
+  font-family: 'Abril Fatface', sans-serif;
+  fill: #223344;
+}
+
+]]&gt;
+&lt;/style&gt;
+  &lt;rect fill="white" x="0" y="0" width="100%" height="100%" /&gt;
+  &lt;polygon points="100,195 17.73,147.5 17.73,52.5 100,5 182.27,52.5 182.27,147.5 100,195" id="hex" stroke="#223344" fill-opacity="0" stroke-width="3" /&gt;
+  &lt;text x="22" y="90" class="mainfont"&gt;
+    /dev/out/
+  &lt;/text&gt;
+  &lt;text x="72" y="135" class="mainfont"&gt;
+    svg
+  &lt;/text&gt;
+&lt;/svg&gt;</details></pre>
+
+<img src="man/figures/logo.png" width=400>

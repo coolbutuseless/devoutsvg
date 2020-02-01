@@ -4,10 +4,10 @@
 \alias{is_black}
 \title{Is the colour black?}
 \usage{
-is_black(vec)
+is_black(rgba_vec)
 }
 \arguments{
-\item{vec}{4 element rgba with integer values [0, 255]}
+\item{rgba_vec}{4 element rgba with integer values [0, 255]}
 }
 \value{
 TRUE if black

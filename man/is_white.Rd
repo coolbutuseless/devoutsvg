@@ -4,10 +4,10 @@
 \alias{is_white}
 \title{Is the colour white?}
 \usage{
-is_white(vec)
+is_white(rgba_vec)
 }
 \arguments{
-\item{vec}{4 element rgba with integer values [0, 255]}
+\item{rgba_vec}{4 element rgba with integer values [0, 255]}
 }
 \value{
 TRUE if white
