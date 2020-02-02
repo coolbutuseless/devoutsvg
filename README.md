@@ -278,10 +278,7 @@ invisible(dev.off())
 
 ## More examples of patterns and filters
 
-<details>
-
-<summary style='color: #4169E1;'>Show R code for the base `pie` graph
-(click to open/close) </summary>
+### Patterns in base plotting
 
 ``` r
 my_pattern_list <- list(
@@ -316,12 +313,9 @@ devoutsvg::svgout(filename = "man/figures/example-pie.svg", width = 4, height = 
 invisible(dev.off())
 ```
 
-</details>
+<img src="man/figures/example-pie.svg"   width = "45%" alight = "center" />
 
-<details>
-
-<summary style='color: #4169E1;'>Show R code for USGS plot (click to
-open/close) </summary>
+### Geological patterns
 
 ``` r
 library(sf)
@@ -357,12 +351,9 @@ ggplot(nc) +
 invisible(dev.off())
 ```
 
-</details>
+<img src="man/figures/example-usgs.svg"  width = "75%" alight = "center" />
 
-<details>
-
-<summary style='color: #4169E1;'>Show R code for retro plot (click to
-open/close) </summary>
+### Retro B\&W plotting
 
 ``` r
 my_pattern_list <- list(
@@ -390,11 +381,7 @@ ggplot(mpg) +
 invisible(dev.off())
 ```
 
-</details>
-
-<img src="man/figures/example-usgs.svg"  width = "45%" alight = "left" />
-<img src="man/figures/example-retro.svg" width = "45%" alight = "left" />
-<img src="man/figures/example-pie.svg"   width = "45%" alight = "left" />
+<img src="man/figures/example-retro.svg" width = "75%" alight = "center" />
 
 <div style="clear: both;" />
 
@@ -449,11 +436,6 @@ If you need a PDF version of an SVG file, there are a number of options.
 Note: Because github sanitizes SVG files it makes the SVG produced in
 this section unviewable. Instead, the SVG was first saved, and then
 rendered to PNG
-
-<details>
-
-<summary style='color: #4169E1;'>Show R code for logo (click to
-open/close) </summary>
 
 ``` r
 library(minisvg)
@@ -518,8 +500,6 @@ logo$add_css("
 # logo$show()
 logo$save("man/figures/logo.svg")
 ```
-
-</details>
 
 <pre><details><summary style='color: #4169E1;'> Show/hide SVG text </summary>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
