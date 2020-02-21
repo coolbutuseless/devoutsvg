@@ -19,6 +19,25 @@ library(devoutsvg)
 ```
 
 
+# Introduction
+
+This example is an adapted version of [timelyportfolio](https://twitter.com/timelyportfolio)'s interactive 
+version of a plot originally by [Claus Wilke](http://wilkelab.org/).
+
+My input here is minimal.  The D3 javascript code is taken almost verbatim from [timelyportfolio](https://twitter.com/timelyportfolio)'s examples:
+
+* [example 1](https://bl.ocks.org/timelyportfolio/47cac2df130436f3292afaa38253072d)
+* [example 2](https://bl.ocks.org/timelyportfolio/b5b22cf7519261fa692a8cc696a943ce)
+
+The difference with this {devoutsvg} example is that the d3 code is injected into the
+plot during the process of rendering to device.   While in [timelyportfolio](https://twitter.com/timelyportfolio)'s examples,
+the plot is output to SVG, the SVG is then read back in and manipulated as a character string, and then written back out.
+
+
+# Code
+
+
+
 ```{r}
 # will need newest ggplot2, github multiscales, and dev version of colorspace
 # install.packages('ggplot2')
