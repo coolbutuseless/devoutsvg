@@ -1,4 +1,9 @@
 
+# devoutsvg 0.2.1  2020-04-19
+
+* Minor update to use new interface to `devout::rdevice()`  which accepts
+  function objects, not just function names
+
 # devoutsvg 0.2.0  2020-01-20
 
 * Removed old `{devoutsvg-0.1.0}` api for pattern integration.
@@ -13,4 +18,4 @@
 
 # devoutsvg 0.1.0
 
-* Added a `NEWS.md` file to track changes to the package.
+* Initial release

@@ -1,7 +1,7 @@
 Package: devoutsvg
 Type: Package
 Title: SVG Graphics Device with Pattern Fill Support
-Version: 0.2.0
+Version: 0.2.1
 Author: mikefc@coolbutuseless.com
 Maintainer: mikefc <mikefc@coolbutuseless.com>
 Description: SVG graphics device written in R. Supports regions filled with patterns.
@@ -30,5 +30,5 @@ Suggests:
     class,
     scales,
     KernSmooth
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 VignetteBuilder: knitr

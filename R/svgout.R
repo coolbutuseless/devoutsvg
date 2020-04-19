@@ -562,7 +562,7 @@ svgout <- function(filename = "svgout.svg", width = 10, height = 8,
                    pattern_list = NULL, ...) {
   requireNamespace('devout')
   devout::rdevice(
-    "svg_callback",
+    svg_callback,
     filename     = filename,
     width        = width,
     height       = height,
